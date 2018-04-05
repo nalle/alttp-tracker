@@ -3,14 +3,14 @@ boomerang
 hookshot
 mushroom
 powder
-fullheart
+none
 dungeon1
 firerod
 icerod
 bombos
 ether
 quake
-fullheart
+none
 dungeon2
 lamp
 hammer

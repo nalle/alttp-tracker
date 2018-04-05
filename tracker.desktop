@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Linux ALttP tracker
+Comment=A tracker for Zelda - A Link to the Past
+Exec=/usr/bin/tracker
+Icon=
+Terminal=false
+Type=Application
+Categories=Game;
+Keywords=alttp;tracker;

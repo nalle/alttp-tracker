@@ -17,7 +17,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/{item}1.png</pixmap>
+     <pixmap>/usr/share/tracker/images/{item}1.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="{item}Overlay">

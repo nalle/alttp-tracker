@@ -14,7 +14,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>images/{dungeon}1.png</pixmap>
+     <pixmap>/usr/share/tracker/images/{dungeon}1.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="{dungeon}RewardImage">
@@ -40,7 +40,7 @@
      <string notr="true">background-color: rgba(0,0,0,60%);</string>
     </property>
     <property name="pixmap">
-     <pixmap>images/crystal1.png</pixmap>
+     <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="{dungeon}Overlay">
@@ -62,7 +62,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="{dungeon}OverlayPush">
+   <widget class="QRightClickButton" name="{dungeon}OverlayPush">
     <property name="geometry">
      <rect>
       <x>{x}</x>

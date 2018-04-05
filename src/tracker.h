@@ -47,6 +47,16 @@ private slots:
     void on_glovesOverlayPush_clicked();
     void on_flippersOverlayPush_clicked();
     void on_halfmagicOverlayPush_clicked();
+    void on_easternpalaceOverlayPush_RightClicked();
+    void on_desertpalaceOverlayPush_RightClicked();
+    void on_towerofheraOverlayPush_RightClicked();
+    void on_palaceofdarknessOverlayPush_RightClicked();
+    void on_swamppalaceOverlayPush_RightClicked();
+    void on_skullwoodsOverlayPush_RightClicked();
+    void on_thievestownOverlayPush_RightClicked();
+    void on_icepalaceOverlayPush_RightClicked();
+    void on_miserymireOverlayPush_RightClicked();
+    void on_turtlerockOverlayPush_RightClicked();
     void on_easternpalaceOverlayPush_clicked();
     void on_desertpalaceOverlayPush_clicked();
     void on_towerofheraOverlayPush_clicked();
