@@ -1,0 +1,2906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>432</width>
+    <height>376</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>NalleTracker</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: black;</string>
+   </property>
+      <widget class="QLabel" name="bowImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/bow1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bowOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bowOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="boomerangImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/boomerang1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="boomerangOverlay">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="boomerangOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hookshotImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/hookshot1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hookshotOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hookshotOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mushroomImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/mushroom1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mushroomOverlay">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mushroomOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="powderImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/powder1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="powderOverlay">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="powderOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fullheartImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/fullheart1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fullheartOverlay">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fullheartOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="easternpalaceImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/easternpalace1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="easternpalaceRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="easternpalaceOverlay">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="easternpalaceOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>0</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="firerodImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/firerod1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="firerodOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="firerodOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="icerodImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icerod1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="icerodOverlay">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="icerodOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bombosImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/bombos1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bombosOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bombosOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="etherImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/ether1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="etherOverlay">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="etherOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="quakeImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/quake1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="quakeOverlay">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quakeOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fullheartImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/fullheart1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fullheartOverlay">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fullheartOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="desertpalaceImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/desertpalace1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="desertpalaceRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="desertpalaceOverlay">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="desertpalaceOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>62</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lampImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/lamp1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lampOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="lampOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hammerImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/hammer1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hammerOverlay">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hammerOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fluteImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/flute1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="fluteOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="fluteOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="shovelImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/shovel1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="shovelOverlay">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shovelOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bugnetImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/bugnet1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bugnetOverlay">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bugnetOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bookImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/book1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bookOverlay">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bookOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="towerofheraImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/towerofhera1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="towerofheraRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="towerofheraOverlay">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="towerofheraOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>124</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bottleImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/bottle1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bottleOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bottleOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="caneofbyrnaImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/caneofbyrna1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="caneofbyrnaOverlay">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="caneofbyrnaOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="caneofsomariaImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/caneofsomaria1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="caneofsomariaOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="caneofsomariaOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="capeImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/cape1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="capeOverlay">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="capeOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mirrorImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/mirror1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mirrorOverlay">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mirrorOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="moonpearlImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/moonpearl1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="moonpearlOverlay">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="moonpearlOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="aghanimImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/aghanim1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="aghanimOverlay">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="aghanimOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bootsImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/boots1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bootsOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bootsOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glovesImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/gloves1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="glovesOverlay">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="glovesOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="flippersImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/flippers1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="flippersOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="flippersOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="halfmagicImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/halfmagic1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="halfmagicOverlay">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="halfmagicOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="shieldImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/shield1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="shieldOverlay">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shieldOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="swordImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/sword1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="swordOverlay">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="swordOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tunicImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/tunic1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tunicOverlay">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tunicOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>248</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="palaceofdarknessImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/palaceofdarkness1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="palaceofdarknessRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="palaceofdarknessOverlay">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="palaceofdarknessOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="swamppalaceImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/swamppalace1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="swamppalaceRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="swamppalaceOverlay">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="swamppalaceOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="skullwoodsImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/skullwoods1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="skullwoodsRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="skullwoodsOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="skullwoodsOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thievestownImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/thievestown1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thievestownRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thievestownOverlay">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="thievestownOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="icepalaceImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/icepalace1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="icepalaceRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="icepalaceOverlay">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="icepalaceOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="miserymireImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/miserymire1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="miserymireRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="miserymireOverlay">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="miserymireOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="turtlerockImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/turtlerock1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="turtlerockRewardImage">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignRight|Qt::AlignBottom</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="pixmap">
+     <pixmap>images/crystal1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="turtlerockOverlay">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="turtlerockOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>372</x>
+      <y>310</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
+
