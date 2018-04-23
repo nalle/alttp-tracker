@@ -67,7 +67,9 @@ private slots:
     void on_icepalaceOverlayPush_clicked();
     void on_miserymireOverlayPush_clicked();
     void on_turtlerockOverlayPush_clicked();
-
+    void on_bombosOverlayPush_RightClicked(); 
+    void on_etherOverlayPush_RightClicked(); 
+    void on_quakeOverlayPush_RightClicked(); 
 
 private:
     Ui::MainWindow *ui;

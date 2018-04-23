@@ -7,9 +7,9 @@ none
 dungeon1
 firerod
 icerod
-bombos
-ether
-quake
+medallion1
+medallion2
+medallion3
 none
 dungeon2
 lamp
@@ -20,8 +20,8 @@ bugnet
 book
 dungeon3
 bottle
-caneofbyrna
 caneofsomaria
+caneofbyrna
 cape
 mirror
 moonpearl

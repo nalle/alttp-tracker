@@ -1,4 +1,4 @@
-   <widget class="QLabel" name="{dungeon}Image">
+   <widget class="QLabel" name="{medallion}Image">
     <property name="geometry">
      <rect>
       <x>{x}</x>
@@ -14,20 +14,20 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>/usr/share/tracker/images/{dungeon}1.png</pixmap>
+     <pixmap>/usr/share/tracker/images/{medallion}1.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="{dungeon}RewardImage">
+   <widget class="QLabel" name="{medallion}RequiredImage">
     <property name="geometry">
      <rect>
       <x>{x}</x>
       <y>{y}</y>
       <width>62</width>
-      <height>62</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="alignment" >
-     <set>Qt::AlignRight|Qt::AlignBottom</set>
+     <set>Qt::AlignTop|Qt::AlignLeft</set>
     </property>
     <property name="autoFillBackground">
      <bool>false</bool>
@@ -35,15 +35,16 @@
     <property name="text">
      <string/>
     </property>
-
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,50%);</string>
+     <string notr="true">background-color: rgba(0,0,0,0%);</string>
     </property>
-    <property name="pixmap">
-     <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
-    </property>
+<!--    <property name="pixmap">
+     <pixmap>/usr/share/tracker/images/medallion_both.png</pixmap>
+    </property>-->
    </widget>
-   <widget class="QLabel" name="{dungeon}Overlay">
+
+
+   <widget class="QLabel" name="{medallion}Overlay">
     <property name="geometry">
      <rect>
       <x>{x}</x>
@@ -56,13 +57,13 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,50%);</string>
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QRightClickButton" name="{dungeon}OverlayPush">
+   <widget class="QRightClickButton" name="{medallion}OverlayPush">
     <property name="geometry">
      <rect>
       <x>{x}</x>
@@ -78,7 +79,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,50%);</string>
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
     </property>
     <property name="text">
      <string/>

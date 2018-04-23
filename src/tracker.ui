@@ -437,7 +437,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -456,7 +456,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -478,7 +478,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -622,9 +622,6 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
     <property name="text">
      <string/>
     </property>
@@ -632,6 +629,33 @@
      <pixmap>/usr/share/tracker/images/bombos1.png</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="bombosRequiredImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>62</y>
+      <width>62</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignTop|Qt::AlignLeft</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0%);</string>
+    </property>
+<!--    <property name="pixmap">
+     <pixmap>/usr/share/tracker/images/medallion_both.png</pixmap>
+    </property>-->
+   </widget>
+
+
    <widget class="QLabel" name="bombosOverlay">
     <property name="geometry">
      <rect>
@@ -651,7 +675,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="bombosOverlayPush">
+   <widget class="QRightClickButton" name="bombosOverlayPush">
     <property name="geometry">
      <rect>
       <x>124</x>
@@ -685,9 +709,6 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
     <property name="text">
      <string/>
     </property>
@@ -695,6 +716,33 @@
      <pixmap>/usr/share/tracker/images/ether1.png</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="etherRequiredImage">
+    <property name="geometry">
+     <rect>
+      <x>186</x>
+      <y>62</y>
+      <width>62</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignTop|Qt::AlignLeft</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0%);</string>
+    </property>
+<!--    <property name="pixmap">
+     <pixmap>/usr/share/tracker/images/medallion_both.png</pixmap>
+    </property>-->
+   </widget>
+
+
    <widget class="QLabel" name="etherOverlay">
     <property name="geometry">
      <rect>
@@ -714,7 +762,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="etherOverlayPush">
+   <widget class="QRightClickButton" name="etherOverlayPush">
     <property name="geometry">
      <rect>
       <x>186</x>
@@ -748,9 +796,6 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
     <property name="text">
      <string/>
     </property>
@@ -758,6 +803,33 @@
      <pixmap>/usr/share/tracker/images/quake1.png</pixmap>
     </property>
    </widget>
+   <widget class="QLabel" name="quakeRequiredImage">
+    <property name="geometry">
+     <rect>
+      <x>248</x>
+      <y>62</y>
+      <width>62</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="alignment" >
+     <set>Qt::AlignTop|Qt::AlignLeft</set>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,0%);</string>
+    </property>
+<!--    <property name="pixmap">
+     <pixmap>/usr/share/tracker/images/medallion_both.png</pixmap>
+    </property>-->
+   </widget>
+
+
    <widget class="QLabel" name="quakeOverlay">
     <property name="geometry">
      <rect>
@@ -777,7 +849,7 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="quakeOverlayPush">
+   <widget class="QRightClickButton" name="quakeOverlayPush">
     <property name="geometry">
      <rect>
       <x>248</x>
@@ -901,7 +973,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -920,7 +992,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -942,7 +1014,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -1365,7 +1437,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -1384,7 +1456,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -1406,7 +1478,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -1475,73 +1547,10 @@
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="caneofbyrnaImage">
-    <property name="geometry">
-     <rect>
-      <x>62</x>
-      <y>186</y>
-      <width>62</width>
-      <height>62</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true"/>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap>/usr/share/tracker/images/caneofbyrna1.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QLabel" name="caneofbyrnaOverlay">
-    <property name="geometry">
-     <rect>
-      <x>62</x>
-      <y>186</y>
-      <width>62</width>
-      <height>62</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="caneofbyrnaOverlayPush">
-    <property name="geometry">
-     <rect>
-      <x>62</x>
-      <y>186</y>
-      <width>62</width>
-      <height>62</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QLabel" name="caneofsomariaImage">
     <property name="geometry">
      <rect>
-      <x>124</x>
+      <x>62</x>
       <y>186</y>
       <width>62</width>
       <height>62</height>
@@ -1563,7 +1572,7 @@
    <widget class="QLabel" name="caneofsomariaOverlay">
     <property name="geometry">
      <rect>
-      <x>124</x>
+      <x>62</x>
       <y>186</y>
       <width>62</width>
       <height>62</height>
@@ -1580,6 +1589,69 @@
     </property>
    </widget>
    <widget class="QPushButton" name="caneofsomariaOverlayPush">
+    <property name="geometry">
+     <rect>
+      <x>62</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="caneofbyrnaImage">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>/usr/share/tracker/images/caneofbyrna1.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="caneofbyrnaOverlay">
+    <property name="geometry">
+     <rect>
+      <x>124</x>
+      <y>186</y>
+      <width>62</width>
+      <height>62</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="caneofbyrnaOverlayPush">
     <property name="geometry">
      <rect>
       <x>124</x>
@@ -2333,7 +2405,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2352,7 +2424,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2374,7 +2446,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2419,7 +2491,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2438,7 +2510,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2460,7 +2532,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2505,7 +2577,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2524,7 +2596,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2546,7 +2618,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2591,7 +2663,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2610,7 +2682,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2632,7 +2704,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2677,7 +2749,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2696,7 +2768,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2718,7 +2790,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2763,7 +2835,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2782,7 +2854,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2804,7 +2876,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2849,7 +2921,7 @@
     </property>
 
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="pixmap">
      <pixmap>/usr/share/tracker/images/crystal1.png</pixmap>
@@ -2868,7 +2940,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>
@@ -2890,7 +2962,7 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0,0,0,60%);</string>
+     <string notr="true">background-color: rgba(0,0,0,50%);</string>
     </property>
     <property name="text">
      <string/>

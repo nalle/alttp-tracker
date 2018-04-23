@@ -54,6 +54,9 @@ int thievestownState = 0;
 int icepalaceState = 0;
 int miserymireState = 0;
 int turtlerockState = 0;
+int bombosRequiredState = 0;
+int quakeRequiredState = 0;
+int etherRequiredState = 0;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 /*    connect(ui->easternpalaceOverlayPush, SIGNAL(clicked()), this, SLOT(on_easternpalaceOverlayPush_clicked()));
@@ -77,6 +80,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->icepalaceOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_icepalaceOverlayPush_RightClicked()));
     connect(ui->miserymireOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_miserymireOverlayPush_RightClicked()));
     connect(ui->turtlerockOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_turtlerockOverlayPush_RightClicked()));
+    connect(ui->quakeOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_quakeOverlayPush_RightClicked()));
+    connect(ui->etherOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_etherOverlayPush_RightClicked()));
+    connect(ui->bombosOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_bombosOverlayPush_RightClicked()));
 }
 
 
@@ -534,10 +540,6 @@ void MainWindow::on_bowOverlayPush_clicked() {
             bowState++;
         break;
         case 3:
-            ui->bowImage->setPixmap(QPixmap("/usr/share/tracker/images/bow3.png"));
-            bowState++;
-        break;
-        case 4:
             ui->bowImage->setPixmap(QPixmap("/usr/share/tracker/images/bow1.png"));
             ui->bowOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
             bowState = 0;
@@ -778,6 +780,69 @@ void MainWindow::on_turtlerockOverlayPush_RightClicked() {
         case 4:
             ui->turtlerockRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
             turtlerockState = 0;
+        break;
+    }
+}
+
+void MainWindow::on_bombosOverlayPush_RightClicked() {
+    switch(bombosRequiredState) {
+        case 0: 
+            ui->bombosRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_mm1.png"));
+            bombosRequiredState++;
+        break;
+        case 1:
+            ui->bombosRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_tr1.png"));
+            bombosRequiredState++;
+        break;
+        case 2:
+            ui->bombosRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_both.png"));
+            bombosRequiredState++;
+        break;
+        case 3:
+            ui->bombosRequiredImage->setPixmap(QPixmap("empty"));
+            bombosRequiredState = 0;
+        break;
+    }
+}
+
+void MainWindow::on_etherOverlayPush_RightClicked() {
+    switch(etherRequiredState) {
+        case 0: 
+            ui->etherRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_mm1.png"));
+            etherRequiredState++;
+        break;
+        case 1:
+            ui->etherRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_tr1.png"));
+            etherRequiredState++;
+        break;
+        case 2:
+            ui->etherRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_both.png"));
+            etherRequiredState++;
+        break;
+        case 3:
+            ui->etherRequiredImage->setPixmap(QPixmap("empty"));
+            etherRequiredState = 0;
+        break;
+    }
+}
+
+void MainWindow::on_quakeOverlayPush_RightClicked() {
+    switch(quakeRequiredState) {
+        case 0: 
+            ui->quakeRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_mm1.png"));
+            quakeRequiredState++;
+        break;
+        case 1:
+            ui->quakeRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_tr1.png"));
+            quakeRequiredState++;
+        break;
+        case 2:
+            ui->quakeRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_both.png"));
+            quakeRequiredState++;
+        break;
+        case 3:
+            ui->quakeRequiredImage->setPixmap(QPixmap("empty"));
+            quakeRequiredState = 0;
         break;
     }
 }
