@@ -25,12 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        qrightclickbutton.cpp \
         tracker.cpp 
 HEADERS += \
-        tracker.h \
-        qrightclickbutton.h
+        tracker.h 
 
-FORMS += \
-        tracker.ui
+#FORMS += \
+#        tracker.ui
 
+CONFIG += c++11

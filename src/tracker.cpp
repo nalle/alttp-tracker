@@ -1,849 +1,305 @@
+
 #include "tracker.h"
-#include "ui_tracker.h"
-#include <QAbstractButton>
-#include <QDebug>
+#include <QCoreApplication>
+#include <QIcon>
+#include <QPushButton>
+#include <QLabel>
+#include <QMessageBox>
+#include <QtDebug>
+#include <QBitmap>
+#include <QSignalMapper>
 
-bool hookshotState = true;
-bool mushroomState = true;
-bool powderState = true;
-bool firerodState = true;
-bool icerodState = true;
-bool bombosState = true;
-bool etherState = true;
-bool quakeState = true;
-bool fullheartState = true;
-bool lampState = true;
-bool hammerState = true;
-bool fluteState = true;
-bool shovelState = true;
-bool bugnetState = true;
-bool bookState = true;
-bool caneofbyrnaState = true;
-bool caneofsomariaState = true;
-bool capeState = true;
-bool mirrorState = true;
-bool moonpearlState = true;
-bool aghanimState = true;
-bool bootsState = true;
-bool flippersState = true;
-bool halfmagicState = true;
-bool easternpalaceBoolState = true;
-bool desertpalaceBoolState = true;
-bool towerofheraBoolState = true;
-bool palaceofdarknessBoolState = true;
-bool swamppalaceBoolState = true;
-bool skullwoodsBoolState = true;
-bool thievestownBoolState = true;
-bool icepalaceBoolState = true;
-bool miserymireBoolState = true;
-bool turtlerockBoolState = true;
-int bowState = 0;
-int swordState = 0;
-int shieldState = 0;
-int tunicState = 0;
-int glovesState = 0;
-int bottleState = 0;
-int boomerangState = 0;
-int easternpalaceState = 0;
-int desertpalaceState = 0;
-int towerofheraState = 0;
-int palaceofdarknessState = 0;
-int swamppalaceState = 0;
-int skullwoodsState = 0;
-int thievestownState = 0;
-int icepalaceState = 0;
-int miserymireState = 0;
-int turtlerockState = 0;
-int bombosRequiredState = 0;
-int quakeRequiredState = 0;
-int etherRequiredState = 0;
-
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
-/*    connect(ui->easternpalaceOverlayPush, SIGNAL(clicked()), this, SLOT(on_easternpalaceOverlayPush_clicked()));
-    connect(ui->desertpalaceOverlayPush, SIGNAL(clicked()), this, SLOT(on_desertpalaceOverlayPush_clicked()));
-    connect(ui->towerofheraOverlayPush, SIGNAL(clicked()), this, SLOT(on_towerofheraOverlayPush_clicked()));
-    connect(ui->palaceofdarknessOverlayPush, SIGNAL(clicked()), this, SLOT(on_palaceofdarknessOverlayPush_clicked()));
-    connect(ui->swamppalaceOverlayPush, SIGNAL(clicked()), this, SLOT(on_swamppalaceOverlayPush_clicked()));
-    connect(ui->skullwoodsOverlayPush, SIGNAL(clicked()), this, SLOT(on_skullwoodsOverlayPush_clicked()));
-    connect(ui->thievestownOverlayPush, SIGNAL(clicked()), this, SLOT(on_thievestownOverlayPush_clicked()));
-    connect(ui->icepalaceOverlayPush, SIGNAL(clicked()), this, SLOT(on_icepalaceOverlayPush_clicked()));
-    connect(ui->miserymireOverlayPush, SIGNAL(clicked()), this, SLOT(on_miserymireOverlayPush_clicked()));
-    connect(ui->turtlerockOverlayPush, SIGNAL(clicked()), this, SLOT(on_turtlerockOverlayPush_clicked()));*/
-    ui->setupUi(this);
-    connect(ui->easternpalaceOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_easternpalaceOverlayPush_RightClicked()));
-    connect(ui->desertpalaceOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_desertpalaceOverlayPush_RightClicked()));
-    connect(ui->towerofheraOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_towerofheraOverlayPush_RightClicked()));
-    connect(ui->palaceofdarknessOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_palaceofdarknessOverlayPush_RightClicked()));
-    connect(ui->swamppalaceOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_swamppalaceOverlayPush_RightClicked()));
-    connect(ui->skullwoodsOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_skullwoodsOverlayPush_RightClicked()));
-    connect(ui->thievestownOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_thievestownOverlayPush_RightClicked()));
-    connect(ui->icepalaceOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_icepalaceOverlayPush_RightClicked()));
-    connect(ui->miserymireOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_miserymireOverlayPush_RightClicked()));
-    connect(ui->turtlerockOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_turtlerockOverlayPush_RightClicked()));
-    connect(ui->quakeOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_quakeOverlayPush_RightClicked()));
-    connect(ui->etherOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_etherOverlayPush_RightClicked()));
-    connect(ui->bombosOverlayPush, SIGNAL(rightClicked()), this, SLOT(on_bombosOverlayPush_RightClicked()));
+bool MainWindow::toggle(Item *item) {
+    if (item->toggled) {
+        enable_item(item);
+    } else {
+        disable_item(item);
+    }
+    item->toggled = !item->toggled;
+    return true;
 }
 
-
-MainWindow::~MainWindow()
-{
-    delete ui;
+bool MainWindow::enable_item(Item *item) {
+        item->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        item->toggled = true;
+        return item->toggled;
 }
 
-void MainWindow::on_easternpalaceOverlayPush_clicked() {
-    if (easternpalaceBoolState) {
-        ui->easternpalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        easternpalaceBoolState = false;
-    } else {
-        ui->easternpalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        easternpalaceBoolState = true;
-    }
+bool MainWindow::disable_item(Item *item) {
+        item->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0;");
+        item->toggled = false;
+        return item->toggled;
 }
-void MainWindow::on_desertpalaceOverlayPush_clicked() {
-    if (desertpalaceBoolState) {
-        ui->desertpalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        desertpalaceBoolState = false;
+
+void MainWindow::progress(Item *item) {
+    if (item->itemcount == 0 && !item->toggled) {
+        enable_item(item);
+        return;
     } else {
-        ui->desertpalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        desertpalaceBoolState = true;
+        item->icon->setPixmap(item->next_image());
     }
-}
-void MainWindow::on_towerofheraOverlayPush_clicked() {
-    if (towerofheraBoolState) {
-        ui->towerofheraOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        towerofheraBoolState = false;
-    } else {
-        ui->towerofheraOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        towerofheraBoolState = true;
-    }
-}
-void MainWindow::on_palaceofdarknessOverlayPush_clicked() {
-    if (palaceofdarknessBoolState) {
-        ui->palaceofdarknessOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        palaceofdarknessBoolState = false;
-    } else {
-        ui->palaceofdarknessOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        palaceofdarknessBoolState = true;
-    }
-}
-void MainWindow::on_swamppalaceOverlayPush_clicked() {
-    if (swamppalaceBoolState) {
-        ui->swamppalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        swamppalaceBoolState = false;
-    } else {
-        ui->swamppalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        swamppalaceBoolState = true;
-    }
-}
-void MainWindow::on_skullwoodsOverlayPush_clicked() {
-    if (skullwoodsBoolState) {
-        ui->skullwoodsOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        skullwoodsBoolState = false;
-    } else {
-        ui->skullwoodsOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        skullwoodsBoolState = true;
-    }
-}
-void MainWindow::on_thievestownOverlayPush_clicked() {
-    if (thievestownBoolState) {
-        ui->thievestownOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        thievestownBoolState = false;
-    } else {
-        ui->thievestownOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        thievestownBoolState = true;
-    }
-}
-void MainWindow::on_icepalaceOverlayPush_clicked() {
-    if (icepalaceBoolState) {
-        ui->icepalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        icepalaceBoolState = false;
-    } else {
-        ui->icepalaceOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        icepalaceBoolState = true;
-    }
-}
-void MainWindow::on_miserymireOverlayPush_clicked() {
-    if (miserymireBoolState) {
-        ui->miserymireOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        miserymireBoolState = false;
-    } else {
-        ui->miserymireOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        miserymireBoolState = true;
-    }
-}
-void MainWindow::on_turtlerockOverlayPush_clicked() {
-    if (turtlerockBoolState) {
-        ui->turtlerockOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        turtlerockBoolState = false;
-    } else {
-        ui->turtlerockOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        turtlerockBoolState = true;
+    if (item->itemcount == 0) {
+        disable_item(item);
     }
 }
 
-void MainWindow::on_hookshotOverlayPush_clicked() {
-    if (hookshotState) {
-        ui->hookshotOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        hookshotState = false;
-    } else {
-        ui->hookshotOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        hookshotState = true;
-    }
-}
-void MainWindow::on_mushroomOverlayPush_clicked() {
-    if (mushroomState) {
-        ui->mushroomOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        mushroomState = false;
-    } else {
-        ui->mushroomOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        mushroomState = true;
-    }
-}
-void MainWindow::on_powderOverlayPush_clicked() {
-    if (powderState) {
-        ui->powderOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        powderState = false;
-    } else {
-        ui->powderOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        powderState = true;
-    }
-}
-void MainWindow::on_firerodOverlayPush_clicked() {
-    if (firerodState) {
-        ui->firerodOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        firerodState = false;
-    } else {
-        ui->firerodOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        firerodState = true;
-    }
-}
-void MainWindow::on_icerodOverlayPush_clicked() {
-    if (icerodState) {
-        ui->icerodOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        icerodState = false;
-    } else {
-        ui->icerodOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        icerodState = true;
-    }
-}
-void MainWindow::on_bombosOverlayPush_clicked() {
-    if (bombosState) {
-        ui->bombosOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        bombosState = false;
-    } else {
-        ui->bombosOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        bombosState = true;
-    }
-}
-void MainWindow::on_etherOverlayPush_clicked() {
-    if (etherState) {
-        ui->etherOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        etherState = false;
-    } else {
-        ui->etherOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        etherState = true;
-    }
-}
-void MainWindow::on_quakeOverlayPush_clicked() {
-    if (quakeState) {
-        ui->quakeOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        quakeState = false;
-    } else {
-        ui->quakeOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        quakeState = true;
-    }
-}
-void MainWindow::on_lampOverlayPush_clicked() {
-    if (lampState) {
-        ui->lampOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        lampState = false;
-    } else {
-        ui->lampOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        lampState = true;
-    }
-}
-void MainWindow::on_hammerOverlayPush_clicked() {
-    if (hammerState) {
-        ui->hammerOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        hammerState = false;
-    } else {
-        ui->hammerOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        hammerState = true;
-    }
-}
-void MainWindow::on_fluteOverlayPush_clicked() {
-    if (fluteState) {
-        ui->fluteOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        fluteState = false;
-    } else {
-        ui->fluteOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        fluteState = true;
-    }
-}
-void MainWindow::on_shovelOverlayPush_clicked() {
-    if (shovelState) {
-        ui->shovelOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        shovelState = false;
-    } else {
-        ui->shovelOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        shovelState = true;
-    }
-}
-void MainWindow::on_bugnetOverlayPush_clicked() {
-    if (bugnetState) {
-        ui->bugnetOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        bugnetState = false;
-    } else {
-        ui->bugnetOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        bugnetState = true;
-    }
-}
-void MainWindow::on_bookOverlayPush_clicked() {
-    if (bookState) {
-        ui->bookOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        bookState = false;
-    } else {
-        ui->bookOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        bookState = true;
-    }
-}
-void MainWindow::on_caneofbyrnaOverlayPush_clicked() {
-    if (caneofbyrnaState) {
-        ui->caneofbyrnaOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        caneofbyrnaState = false;
-    } else {
-        ui->caneofbyrnaOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        caneofbyrnaState = true;
-    }
-}
-void MainWindow::on_caneofsomariaOverlayPush_clicked() {
-    if (caneofsomariaState) {
-        ui->caneofsomariaOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        caneofsomariaState = false;
-    } else {
-        ui->caneofsomariaOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        caneofsomariaState = true;
-    }
-}
-void MainWindow::on_capeOverlayPush_clicked() {
-    if (capeState) {
-        ui->capeOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        capeState = false;
-    } else {
-        ui->capeOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        capeState = true;
-    }
-}
-void MainWindow::on_mirrorOverlayPush_clicked() {
-    if (mirrorState) {
-        ui->mirrorOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        mirrorState = false;
-    } else {
-        ui->mirrorOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        mirrorState = true;
-    }
-}
-void MainWindow::on_moonpearlOverlayPush_clicked() {
-    if (moonpearlState) {
-        ui->moonpearlOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        moonpearlState = false;
-    } else {
-        ui->moonpearlOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        moonpearlState = true;
-    }
-}
-void MainWindow::on_aghanimOverlayPush_clicked() {
-    if (aghanimState) {
-        ui->aghanimOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        aghanimState = false;
-    } else {
-        ui->aghanimOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        aghanimState = true;
-    }
-}
-void MainWindow::on_bootsOverlayPush_clicked() {
-    if (bootsState) {
-        ui->bootsOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        bootsState = false;
-    } else {
-        ui->bootsOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        bootsState = true;
-    }
-}
-void MainWindow::on_flippersOverlayPush_clicked() {
-    if (flippersState) {
-        ui->flippersOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        flippersState = false;
-    } else {
-        ui->flippersOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        flippersState = true;
-    }
-}
-void MainWindow::on_halfmagicOverlayPush_clicked() {
-    if (halfmagicState) {
-        ui->halfmagicOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-        halfmagicState = false;
-    } else {
-        ui->halfmagicOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-        halfmagicState = true;
-    }
+void setupObject(Item *item, QWidget *widget, int x, int y, array<QString, 4> images) {
+    item->images = images;
+    item->icon = new QLabel(widget);
+    item->button = new QPushButton("",widget);
+    item->setupObject(x,y);
 }
 
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+    Item *bow = new Item();
+    setupObject(bow, this, 0, 0, { "bow1.png", "bow2.png", "bow3.png" });
+    connect(bow->button, &QPushButton::released, [=]{
+        progress(bow);
+    });
 
+    Item *boomerang = new Item();
+    setupObject(boomerang, this, 62, 0, { "boomerang1.png","boomerang2.png" });
+    connect(boomerang->button, &QPushButton::released, [=]{
+        progress(boomerang);
+    });
 
-void MainWindow::on_glovesOverlayPush_clicked() {
-    switch(glovesState) {
-        case 0:
-            ui->glovesOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            glovesState++;
-        break;
-        case 1:
-            ui->glovesImage->setPixmap(QPixmap("/usr/share/tracker/images/gloves2.png"));
-            glovesState++;
-        break;
-        case 2:
-            ui->glovesImage->setPixmap(QPixmap("/usr/share/tracker/images/gloves1.png"));
-            ui->glovesOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            glovesState = 0;
-        break;
-    }
-}
-void MainWindow::on_tunicOverlayPush_clicked() {
-    switch(tunicState) {
-        case 0:
-            ui->tunicOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            tunicState++;
-        break;
-        case 1:
-            ui->tunicImage->setPixmap(QPixmap("/usr/share/tracker/images/tunic2.png"));
-            tunicState++;
-        break;
-        case 2:
-            ui->tunicImage->setPixmap(QPixmap("/usr/share/tracker/images/tunic3.png"));
-            tunicState++;
-        break;
-        case 3:
-            ui->tunicImage->setPixmap(QPixmap("/usr/share/tracker/images/tunic1.png"));
-            ui->tunicOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            tunicState = 0;
-        break;
-    }
-}
-void MainWindow::on_shieldOverlayPush_clicked() {
-    switch(shieldState) {
-        case 0:
-            ui->shieldOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            shieldState++;
-        break;
-        case 1:
-            ui->shieldImage->setPixmap(QPixmap("/usr/share/tracker/images/shield2.png"));
-            shieldState++;
-        break;
-        case 2:
-            ui->shieldImage->setPixmap(QPixmap("/usr/share/tracker/images/shield3.png"));
-            shieldState++;
-        break;
-        case 3:
-            ui->shieldImage->setPixmap(QPixmap("/usr/share/tracker/images/shield1.png"));
-            ui->shieldOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            shieldState = 0;
-        break;
-    }
-}
+    Item *hookshot = new Item();
+    setupObject(hookshot, this, 124, 0, { "hookshot1.png" });
+    connect(hookshot->button, &QPushButton::released, [=]{
+        toggle(hookshot);
+    });
 
-void MainWindow::on_boomerangOverlayPush_clicked() {
-    switch(boomerangState) {
-        case 0:
-            ui->boomerangOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            boomerangState++;
-        break;
-        case 1:
-            ui->boomerangImage->setPixmap(QPixmap("/usr/share/tracker/images/boomerang2.png"));
-            boomerangState++;
-        break;
-        case 2:
-            ui->boomerangImage->setPixmap(QPixmap("/usr/share/tracker/images/boomerang1.png"));
-            ui->boomerangOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            boomerangState = 0;
-        break;
-    }
-}
+    Item *mushroom = new Item();
+    setupObject(mushroom, this, 186, 0, { "mushroom1.png" });
+    connect(mushroom->button, &QPushButton::released, [=]{
+        toggle(mushroom);
+    });
 
+    Item *powder = new Item();
+    setupObject(powder, this, 248, 0, { "powder1.png" });
+    connect(powder->button, &QPushButton::released, [=]{
+        toggle(powder);
+    });
 
+    Item *none0 = new Item();
+    setupObject(none0, this, 310, 0, { "" });
+    connect(none0->button, &QPushButton::released, [=]{
+        toggle(none0);
+    });
 
-void MainWindow::on_bottleOverlayPush_clicked() {
-    switch(bottleState) {
-        case 0:
-            ui->bottleOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            bottleState++;
-        break;
-        case 1:
-            ui->bottleImage->setPixmap(QPixmap("/usr/share/tracker/images/bottle2.png"));
-            bottleState++;
-        break;
-        case 2:
-            ui->bottleImage->setPixmap(QPixmap("/usr/share/tracker/images/bottle3.png"));
-            bottleState++;
-        break;
-        case 3:
-            ui->bottleImage->setPixmap(QPixmap("/usr/share/tracker/images/bottle4.png"));
-            bottleState++;
-        break;
-        case 4:
-            ui->bottleImage->setPixmap(QPixmap("/usr/share/tracker/images/bottle1.png"));
-            ui->bottleOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            bottleState = 0;
-        break;
-    }
-}
+    Item *easternpalace = new Item();
+    setupObject(easternpalace, this, 372, 0, { "easternpalace1.png" });
+    connect(easternpalace->button, &QPushButton::released, [=]{
+        toggle(easternpalace);
+    });
 
+    Item *firerod = new Item();
+    setupObject(firerod, this, 0, 62, { "firerod1.png" });
+    connect(firerod->button, &QPushButton::released, [=]{
+        toggle(firerod);
+    });
 
-void MainWindow::on_swordOverlayPush_clicked() {
-    switch(swordState) {
-        case 0:
-            ui->swordOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            swordState++;
-        break;
-        case 1:
-            ui->swordImage->setPixmap(QPixmap("/usr/share/tracker/images/sword2.png"));
-            swordState++;
-        break;
-        case 2:
-            ui->swordImage->setPixmap(QPixmap("/usr/share/tracker/images/sword3.png"));
-            swordState++;
-        break;
-        case 3:
-            ui->swordImage->setPixmap(QPixmap("/usr/share/tracker/images/sword4.png"));
-            swordState++;
-        break;
-        case 4:
-            ui->swordImage->setPixmap(QPixmap("/usr/share/tracker/images/sword1.png"));
-            ui->swordOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            swordState = 0;
-        break;
-    }
-}
+    Item *icerod = new Item();
+    setupObject(icerod, this, 62, 62, { "icerod1.png" });
+    connect(icerod->button, &QPushButton::released, [=]{
+        toggle(icerod);
+    });
 
-void MainWindow::on_bowOverlayPush_clicked() {
-    switch(bowState) {
-        case 0:
-            ui->bowOverlay->setStyleSheet("background-color: rgba(0,0,0,0%);");
-            bowState++;
-        break;
-        case 1:
-            ui->bowImage->setPixmap(QPixmap("/usr/share/tracker/images/arrow1.png"));
-            bowState++;
-        break;
-        case 2:
-            ui->bowImage->setPixmap(QPixmap("/usr/share/tracker/images/bow2.png"));
-            bowState++;
-        break;
-        case 3:
-            ui->bowImage->setPixmap(QPixmap("/usr/share/tracker/images/bow1.png"));
-            ui->bowOverlay->setStyleSheet("background-color: rgba(0,0,0,60%);");
-            bowState = 0;
-        break;
-    }
-}
+    Item *bombos = new Item();
+    setupObject(bombos, this, 124, 62, { "bombos1.png" });
+    connect(bombos->button, &QPushButton::released, [=]{
+        toggle(bombos);
+    });
 
-void MainWindow::on_easternpalaceOverlayPush_RightClicked() {
-    switch(easternpalaceState) {
-        case 0:
-            easternpalaceState++;
-        break;
-        case 1:
-            ui->easternpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            easternpalaceState++;
-        break;
-        case 2:
-            ui->easternpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            easternpalaceState++;
-        break;
-        case 3:
-            ui->easternpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            easternpalaceState++;
-        break;
-        case 4:
-            ui->easternpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            easternpalaceState = 0;
-        break;
-    }
-}
+    Item *ether = new Item();
+    setupObject(ether, this, 186, 62, { "ether1.png" });
+    connect(ether->button, &QPushButton::released, [=]{
+        toggle(ether);
+    });
 
-void MainWindow::on_desertpalaceOverlayPush_RightClicked() {
-    switch(desertpalaceState) {
-        case 0:
-            desertpalaceState++;
-        break;
-        case 1:
-            ui->desertpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            desertpalaceState++;
-        break;
-        case 2:
-            ui->desertpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            desertpalaceState++;
-        break;
-        case 3:
-            ui->desertpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            desertpalaceState++;
-        break;
-        case 4:
-            ui->desertpalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            desertpalaceState = 0;
-        break;
-    }
-}
-void MainWindow::on_towerofheraOverlayPush_RightClicked() {
-    switch(towerofheraState) {
-        case 0:
-            towerofheraState++;
-        break;
-        case 1:
-            ui->towerofheraRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            towerofheraState++;
-        break;
-        case 2:
-            ui->towerofheraRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            towerofheraState++;
-        break;
-        case 3:
-            ui->towerofheraRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            towerofheraState++;
-        break;
-        case 4:
-            ui->towerofheraRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            towerofheraState = 0;
-        break;
-    }
-}
+    Item *quake = new Item();
+    setupObject(quake, this, 248, 62, { "quake1.png" });
+    connect(quake->button, &QPushButton::released, [=]{
+        toggle(quake);
+    });
 
-void MainWindow::on_palaceofdarknessOverlayPush_RightClicked() {
-    switch(palaceofdarknessState) {
-        case 0:
-            palaceofdarknessState++;
-        break;
-        case 1:
-            ui->palaceofdarknessRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            palaceofdarknessState++;
-        break;
-        case 2:
-            ui->palaceofdarknessRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            palaceofdarknessState++;
-        break;
-        case 3:
-            ui->palaceofdarknessRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            palaceofdarknessState++;
-        break;
-        case 4:
-            ui->palaceofdarknessRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            palaceofdarknessState = 0;
-        break;
-    }
-}
+    Item *none1 = new Item();
+    setupObject(none1, this, 310, 62, { "" });
+    connect(none1->button, &QPushButton::released, [=]{
+        toggle(none1);
+    });
 
-void MainWindow::on_swamppalaceOverlayPush_RightClicked() {
-    switch(swamppalaceState) {
-        case 0:
-            swamppalaceState++;
-        break;
-        case 1:
-            ui->swamppalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            swamppalaceState++;
-        break;
-        case 2:
-            ui->swamppalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            swamppalaceState++;
-        break;
-        case 3:
-            ui->swamppalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            swamppalaceState++;
-        break;
-        case 4:
-            ui->swamppalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            swamppalaceState = 0;
-        break;
-    }
-}
-void MainWindow::on_skullwoodsOverlayPush_RightClicked() {
-    switch(skullwoodsState) {
-        case 0:
-            skullwoodsState++;
-        break;
-        case 1:
-            ui->skullwoodsRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            skullwoodsState++;
-        break;
-        case 2:
-            ui->skullwoodsRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            skullwoodsState++;
-        break;
-        case 3:
-            ui->skullwoodsRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            skullwoodsState++;
-        break;
-        case 4:
-            ui->skullwoodsRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            skullwoodsState = 0;
-        break;
-    }
-}
+    Item *desertpalace = new Item();
+    setupObject(desertpalace, this, 372, 62, { "desertpalace1.png" });
+    connect(desertpalace->button, &QPushButton::released, [=]{
+        toggle(desertpalace);
+    });
 
-void MainWindow::on_thievestownOverlayPush_RightClicked() {
-    switch(thievestownState) {
-        case 0:
-            thievestownState++;
-        break;
-        case 1:
-            ui->thievestownRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            thievestownState++;
-        break;
-        case 2:
-            ui->thievestownRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            thievestownState++;
-        break;
-        case 3:
-            ui->thievestownRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            thievestownState++;
-        break;
-        case 4:
-            ui->thievestownRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            thievestownState = 0;
-        break;
-    }
-}
+    Item *lamp = new Item();
+    setupObject(lamp, this, 0, 124, { "lamp1.png" });
+    connect(lamp->button, &QPushButton::released, [=]{
+        toggle(lamp);
+    });
 
-void MainWindow::on_icepalaceOverlayPush_RightClicked() {
-    switch(icepalaceState) {
-        case 0:
-            icepalaceState++;
-        break;
-        case 1:
-            ui->icepalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            icepalaceState++;
-        break;
-        case 2:
-            ui->icepalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            icepalaceState++;
-        break;
-        case 3:
-            ui->icepalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            icepalaceState++;
-        break;
-        case 4:
-            ui->icepalaceRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            icepalaceState = 0;
-        break;
-    }
-}
-void MainWindow::on_miserymireOverlayPush_RightClicked() {
-    switch(miserymireState) {
-        case 0:
-            miserymireState++;
-        break;
-        case 1:
-            ui->miserymireRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            miserymireState++;
-        break;
-        case 2:
-            ui->miserymireRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            miserymireState++;
-        break;
-        case 3:
-            ui->miserymireRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            miserymireState++;
-        break;
-        case 4:
-            ui->miserymireRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            miserymireState = 0;
-        break;
-    }
-}
+    Item *hammer = new Item();
+    setupObject(hammer, this, 62, 124, { "hammer1.png" });
+    connect(hammer->button, &QPushButton::released, [=]{
+        toggle(hammer);
+    });
 
-void MainWindow::on_turtlerockOverlayPush_RightClicked() {
-    switch(turtlerockState) {
-        case 0:
-            turtlerockState++;
-        break;
-        case 1:
-            ui->turtlerockRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal2.png"));
-            turtlerockState++;
-        break;
-        case 2:
-            ui->turtlerockRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant1.png"));
-            turtlerockState++;
-        break;
-        case 3:
-            ui->turtlerockRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/pendant2.png"));
-            turtlerockState++;
-        break;
-        case 4:
-            ui->turtlerockRewardImage->setPixmap(QPixmap("/usr/share/tracker/images/crystal1.png"));
-            turtlerockState = 0;
-        break;
-    }
-}
+    Item *flute = new Item();
+    setupObject(flute, this, 124, 124, { "flute1.png" });
+    connect(flute->button, &QPushButton::released, [=]{
+        toggle(flute);
+    });
 
-void MainWindow::on_bombosOverlayPush_RightClicked() {
-    switch(bombosRequiredState) {
-        case 0: 
-            ui->bombosRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_mm1.png"));
-            bombosRequiredState++;
-        break;
-        case 1:
-            ui->bombosRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_tr1.png"));
-            bombosRequiredState++;
-        break;
-        case 2:
-            ui->bombosRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_both.png"));
-            bombosRequiredState++;
-        break;
-        case 3:
-            ui->bombosRequiredImage->setPixmap(QPixmap("empty"));
-            bombosRequiredState = 0;
-        break;
-    }
-}
+    Item *shovel = new Item();
+    setupObject(shovel, this, 186, 124, { "shovel1.png" });
+    connect(shovel->button, &QPushButton::released, [=]{
+        toggle(shovel);
+    });
 
-void MainWindow::on_etherOverlayPush_RightClicked() {
-    switch(etherRequiredState) {
-        case 0: 
-            ui->etherRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_mm1.png"));
-            etherRequiredState++;
-        break;
-        case 1:
-            ui->etherRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_tr1.png"));
-            etherRequiredState++;
-        break;
-        case 2:
-            ui->etherRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_both.png"));
-            etherRequiredState++;
-        break;
-        case 3:
-            ui->etherRequiredImage->setPixmap(QPixmap("empty"));
-            etherRequiredState = 0;
-        break;
-    }
-}
+    Item *bugnet = new Item();
+    setupObject(bugnet, this, 248, 124, { "bugnet1.png" });
+    connect(bugnet->button, &QPushButton::released, [=]{
+        toggle(bugnet);
+    });
 
-void MainWindow::on_quakeOverlayPush_RightClicked() {
-    switch(quakeRequiredState) {
-        case 0: 
-            ui->quakeRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_mm1.png"));
-            quakeRequiredState++;
-        break;
-        case 1:
-            ui->quakeRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_tr1.png"));
-            quakeRequiredState++;
-        break;
-        case 2:
-            ui->quakeRequiredImage->setPixmap(QPixmap("/usr/share/tracker/images/medallion_both.png"));
-            quakeRequiredState++;
-        break;
-        case 3:
-            ui->quakeRequiredImage->setPixmap(QPixmap("empty"));
-            quakeRequiredState = 0;
-        break;
-    }
-}
+    Item *book = new Item();
+    setupObject(book, this, 310, 124, { "book1.png" });
+    connect(book->button, &QPushButton::released, [=]{
+        toggle(book);
+    });
 
+    Item *towerofhera = new Item();
+    setupObject(towerofhera, this, 372, 124, { "towerofhera1.png" });
+    connect(towerofhera->button, &QPushButton::released, [=]{
+        toggle(towerofhera);
+    });
+
+    Item *bottle = new Item();
+    setupObject(bottle, this, 0, 186, { "bottle1.png","bottle2.png","bottle3.png","bottle4.png" });
+    connect(bottle->button, &QPushButton::released, [=]{
+        progress(bottle);
+    });
+
+    Item *caneofsomaria = new Item();
+    setupObject(caneofsomaria, this, 62, 186, { "caneofsomaria1.png" });
+    connect(caneofsomaria->button, &QPushButton::released, [=]{
+        toggle(caneofsomaria);
+    });
+
+    Item *caneofbyrna = new Item();
+    setupObject(caneofbyrna, this, 124, 186, { "caneofbyrna1.png" });
+    connect(caneofbyrna->button, &QPushButton::released, [=]{
+        toggle(caneofbyrna);
+    });
+
+    Item *cape = new Item();
+    setupObject(cape, this, 186, 186, { "cape1.png" });
+    connect(cape->button, &QPushButton::released, [=]{
+        toggle(cape);
+    });
+
+    Item *mirror = new Item();
+    setupObject(mirror, this, 248, 186, { "mirror1.png" });
+    connect(mirror->button, &QPushButton::released, [=]{
+        toggle(mirror);
+    });
+
+    Item *moonpearl = new Item();
+    setupObject(moonpearl, this, 310, 186, { "moonpearl1.png" });
+    connect(moonpearl->button, &QPushButton::released, [=]{
+        toggle(moonpearl);
+    });
+
+    Item *aghanim = new Item();
+    setupObject(aghanim, this, 372, 186, { "aghanim1.png" });
+    connect(aghanim->button, &QPushButton::released, [=]{
+        toggle(aghanim);
+    });
+
+    Item *boots = new Item();
+    setupObject(boots, this, 0, 248, { "boots1.png" });
+    connect(boots->button, &QPushButton::released, [=]{
+        toggle(boots);
+    });
+
+    Item *gloves = new Item();
+    setupObject(gloves, this, 62, 248, { "gloves1.png","gloves2.png" });
+    connect(gloves->button, &QPushButton::released, [=]{
+        progress(gloves);
+    });
+
+    Item *flippers = new Item();
+    setupObject(flippers, this, 124, 248, { "flippers1.png" });
+    connect(flippers->button, &QPushButton::released, [=]{
+        toggle(flippers);
+    });
+
+    Item *halfmagic = new Item();
+    setupObject(halfmagic, this, 186, 248, { "halfmagic1.png","halfmagic2.png" });
+    connect(halfmagic->button, &QPushButton::released, [=]{
+        toggle(halfmagic);
+    });
+
+    Item *shield = new Item();
+    setupObject(shield, this, 248, 248, { "shield1.png","shield2.png","shield3.png" });
+    connect(shield->button, &QPushButton::released, [=]{
+        progress(shield);
+    });
+
+    Item *sword = new Item();
+    setupObject(sword, this, 310, 248, { "sword1.png","sword2.png","sword3.png","sword4.png" });
+    connect(sword->button, &QPushButton::released, [=]{
+        progress(sword);
+    });
+
+    Item *tunic = new Item();
+    setupObject(tunic, this, 372, 248, { "tunic1.png","tunic2.png","tunic3.png" });
+    connect(tunic->button, &QPushButton::released, [=]{
+        progress(tunic);
+    });
+
+    Item *palaceofdarkness = new Item();
+    setupObject(palaceofdarkness, this, 0, 310, { "palaceofdarkness1.png" });
+    connect(palaceofdarkness->button, &QPushButton::released, [=]{
+        toggle(palaceofdarkness);
+    });
+
+    Item *swamppalace = new Item();
+    setupObject(swamppalace, this, 62, 310, { "swamppalace1.png" });
+    connect(swamppalace->button, &QPushButton::released, [=]{
+        toggle(swamppalace);
+    });
+
+    Item *skullwoods = new Item();
+    setupObject(skullwoods, this, 124, 310, { "skullwoods1.png" });
+    connect(skullwoods->button, &QPushButton::released, [=]{
+        toggle(skullwoods);
+    });
+
+    Item *thievestown = new Item();
+    setupObject(thievestown, this, 186, 310, { "thievestown1.png" });
+    connect(thievestown->button, &QPushButton::released, [=]{
+        toggle(thievestown);
+    });
+
+    Item *icepalace = new Item();
+    setupObject(icepalace, this, 248, 310, { "icepalace1.png" });
+    connect(icepalace->button, &QPushButton::released, [=]{
+        toggle(icepalace);
+    });
+
+    Item *miserymire = new Item();
+    setupObject(miserymire, this, 310, 310, { "miserymire1.png" });
+    connect(miserymire->button, &QPushButton::released, [=]{
+        toggle(miserymire);
+    });
+
+    Item *turtlerock = new Item();
+    setupObject(turtlerock, this, 372, 310, { "turtlerock1.png" });
+    connect(turtlerock->button, &QPushButton::released, [=]{
+        toggle(turtlerock);
+    });
+}
