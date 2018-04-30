@@ -10,24 +10,23 @@
 
 bool MainWindow::toggle(Item *item) {
     if (item->toggled) {
-        enable_item(item);
-    } else {
         disable_item(item);
+    } else {
+        enable_item(item);
     }
-    item->toggled = !item->toggled;
     return true;
 }
 
 bool MainWindow::enable_item(Item *item) {
-        item->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
-        item->toggled = true;
-        return item->toggled;
+    item->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+    item->toggled = true;
+    return item->toggled;
 }
 
 bool MainWindow::disable_item(Item *item) {
-        item->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0;");
-        item->toggled = false;
-        return item->toggled;
+    item->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0;");
+    item->toggled = false;
+    return item->toggled;
 }
 
 void MainWindow::progress(Item *item) {
