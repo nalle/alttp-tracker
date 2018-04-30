@@ -25,9 +25,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        tracker.cpp 
-HEADERS += \
-        tracker.h 
+        tracker.cpp \  
+        button.cpp
+HEADERS += \ 
+        tracker.h \ 
+        button.h
 
 #FORMS += \
 #        tracker.ui
