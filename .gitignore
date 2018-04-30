@@ -35,3 +35,4 @@ tracker
 src/moc_*
 src/Makefile
 src/ui_tracker.h
+src/release
