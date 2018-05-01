@@ -27,8 +27,8 @@ class TrackerObject: public QMainWindow {
         bool toggled = false;
         bool is_dungeon, is_medallion = false;
         array<QString, 4> images = {};
-        array<QString, 4> dungeon_images = {"crystal1.png", "crystal2.png", "pendant1.png", "pendant2.png" };
-        array<QString, 3> medallion_images = { "medallion_tr1.png", "medallion_mm1.png", "medallion_both.png" };
+        array<QString, 4> dungeon_images = {};
+        array<QString, 3> medallion_images = {};
         QButton *button;
         QLabel *icon;
         QLabel *dungeon;
@@ -86,6 +86,8 @@ class TrackerObject: public QMainWindow {
     }
 
     void setupObject(int x, int y) {
+        this->dungeon_images = {"crystal1.png", "crystal2.png", "pendant1.png", "pendant2.png" };
+        this->medallion_images = { "medallion_tr1.png", "medallion_mm1.png", "medallion_both.png" };
         this->x = x;
         this->y = y;
         this->icon->setPixmap(this->image_path+this->image());
@@ -107,7 +109,7 @@ class TrackerObject: public QMainWindow {
         }
 */
         this->button->setGeometry(QRect(QPoint(this->x, this->y),QSize(62, 62)));
-        this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0;");
+        this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
     }
 };
 

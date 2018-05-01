@@ -9,8 +9,7 @@ build-windows:
 	mv src/release/tracker.exe .
 
 clean:
-	cd src && make clean
-	rm -rf src/*.o src/Makefile src/moc_* tracker
+	rm -rf src/*.o src/Makefile* src/moc_* tracker src/debug src/release src/tracker_plugin_import.cpp tracker tracker.exe
 
 package:
 	tar czf tracker.tar.gz tracker images

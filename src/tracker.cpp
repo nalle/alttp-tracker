@@ -49,12 +49,17 @@ void MainWindow::progress_medallion(Item *item) {
     item->medallion->setPixmap(item->next_medallion_image());
 }
 
-void setupObject(Item *item, QWidget *widget, int x, int y, array<QString, 4> images) {
+void setupObject(Item *item, QWidget *widget, int x, int y, array<QString, 4> images, bool is_dungeon = false) {
     item->images = images;
-    item->dungeon = new QLabel(widget);
+    if (is_dungeon) {
+        item->is_dungeon = is_dungeon;
+        item->dungeon = new QLabel(widget);
+        item->dungeon->setPixmap(item->image_path+"crystal1.png");
+    }
     item->icon = new QLabel(widget);
     item->button = new QButton(widget);
     item->setupObject(x,y);
+
 }
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
@@ -95,9 +100,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *easternpalace = new Item();
-    easternpalace->is_dungeon = true;
-    setupObject(easternpalace, this, 372, 0, { "easternpalace1.png" });
-    easternpalace->dungeon->setPixmap(easternpalace->image_path+"crystal1.png");
+    setupObject(easternpalace, this, 372, 0, { "easternpalace1.png" }, true);
     connect(easternpalace->button, &QButton::rightClicked, [=]{
         progress_dungeon(easternpalace);
     });
@@ -154,9 +157,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *desertpalace = new Item();
-    desertpalace->is_dungeon = true;
-    setupObject(desertpalace, this, 372, 62, { "desertpalace1.png" });
-    desertpalace->dungeon->setPixmap(desertpalace->image_path+"crystal1.png");
+    setupObject(desertpalace, this, 372, 62, { "desertpalace1.png" }, true);
     connect(desertpalace->button, &QButton::rightClicked, [=]{
         progress_dungeon(desertpalace);
     });
@@ -201,9 +202,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *towerofhera = new Item();
-    towerofhera->is_dungeon = true;
-    setupObject(towerofhera, this, 372, 124, { "towerofhera1.png" });
-    towerofhera->dungeon->setPixmap(desertpalace->image_path+"crystal1.png");
+    setupObject(towerofhera, this, 372, 124, { "towerofhera1.png" }, true);
     connect(towerofhera->button, &QButton::rightClicked, [=]{
         progress_dungeon(towerofhera);
     });
@@ -296,9 +295,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *palaceofdarkness = new Item();
-    palaceofdarkness->is_dungeon = true;
-    setupObject(palaceofdarkness, this, 0, 310, { "palaceofdarkness1.png" });
-    palaceofdarkness->dungeon->setPixmap(palaceofdarkness->image_path+"crystal1.png");
+    setupObject(palaceofdarkness, this, 0, 310, { "palaceofdarkness1.png" }, true);
     connect(palaceofdarkness->button, &QButton::rightClicked, [=]{
         progress_dungeon(palaceofdarkness);
     });
@@ -307,9 +304,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *swamppalace = new Item();
-    swamppalace->is_dungeon = true;
-    setupObject(swamppalace, this, 62, 310, { "swamppalace1.png" });
-    swamppalace->dungeon->setPixmap(swamppalace->image_path+"crystal1.png");
+    setupObject(swamppalace, this, 62, 310, { "swamppalace1.png" }, true);
     connect(swamppalace->button, &QButton::rightClicked, [=]{
         progress_dungeon(swamppalace);
     });
@@ -318,9 +313,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *skullwoods = new Item();
-    skullwoods->is_dungeon = true;
-    setupObject(skullwoods, this, 124, 310, { "skullwoods1.png" });
-    skullwoods->dungeon->setPixmap(skullwoods->image_path+"crystal1.png");
+    setupObject(skullwoods, this, 124, 310, { "skullwoods1.png" }, true);
     connect(skullwoods->button, &QButton::rightClicked, [=]{
         progress_dungeon(skullwoods);
     });
@@ -329,9 +322,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *thievestown = new Item();
-    thievestown->is_dungeon = true;
-    setupObject(thievestown, this, 186, 310, { "thievestown1.png" });
-    thievestown->dungeon->setPixmap(thievestown->image_path+"crystal1.png");
+    setupObject(thievestown, this, 186, 310, { "thievestown1.png" }, true);
     connect(thievestown->button, &QButton::rightClicked, [=]{
         progress_dungeon(thievestown);
     });
@@ -340,9 +331,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *icepalace = new Item();
-    icepalace->is_dungeon = true;
-    setupObject(icepalace, this, 248, 310, { "icepalace1.png" });
-    icepalace->dungeon->setPixmap(icepalace->image_path+"crystal1.png");
+    setupObject(icepalace, this, 248, 310, { "icepalace1.png" }, true);
     connect(icepalace->button, &QButton::rightClicked, [=]{
         progress_dungeon(icepalace);
     });
@@ -351,9 +340,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *miserymire = new Item();
-    miserymire->is_dungeon = true;
-    setupObject(miserymire, this, 310, 310, { "miserymire1.png" });
-    miserymire->dungeon->setPixmap(miserymire->image_path+"crystal1.png");
+    setupObject(miserymire, this, 310, 310, { "miserymire1.png" }, true);
     connect(miserymire->button, &QButton::rightClicked, [=]{
         progress_dungeon(miserymire);
     });
@@ -362,9 +349,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     });
 
     Item *turtlerock = new Item();
-    turtlerock->is_dungeon = true;
-    setupObject(turtlerock, this, 372, 310, { "turtlerock1.png" });
-    turtlerock->dungeon->setPixmap(turtlerock->image_path+"crystal1.png");
+    setupObject(turtlerock, this, 372, 310, { "turtlerock1.png" }, true);
     connect(turtlerock->button, &QButton::rightClicked, [=]{
         progress_dungeon(turtlerock);
     });
