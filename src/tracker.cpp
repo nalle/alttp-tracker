@@ -1,12 +1,9 @@
 #include "tracker.h"
 #include <QCoreApplication>
-#include <QIcon>
 #include <QPushButton>
 #include <QLabel>
 #include <QMessageBox>
 #include <QtDebug>
-#include <QBitmap>
-#include <QSignalMapper>
 
 bool MainWindow::toggle(Item *item) {
     if (item->toggled) {

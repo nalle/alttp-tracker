@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include "button.h"
-#include <QMouseEvent>
 #include <QMainWindow>
 #include <QPushButton>
 #include <QCoreApplication>
