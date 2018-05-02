@@ -19,7 +19,7 @@ class TrackerObject: public QMainWindow {
         #ifdef Q_OS_LINUX
             QString image_path="/usr/share/tracker/images/";
         #else
-            QString image_path="c:\\tmp\\images\\";
+            QString image_path="c:\\alttp-tracker\\images\\";
         #endif
         int x, y = 0;
         unsigned int itemcount = 0;
