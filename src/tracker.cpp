@@ -4,6 +4,9 @@
 #include <QLabel>
 #include <QMessageBox>
 #include <QtDebug>
+#include <QList>
+
+#define gridsize 64
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     QList<QString> dungeons = { "easternpalace", 
@@ -70,24 +73,32 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
                 item_objects[i]->ProgressMedallion();
             });
         }
-        x += 64;
-        if (x / 64 == 5) { 
-            y += 64;
+
+        if (item_objects[i]->name == "mushroom" || item_objects[i]->name == "powder" || item_objects[i]->name == "shovel" || item_objects[i]->name == "flute") {
+            connect(item_objects[i]->button, &QButton::rightClicked, [=]{
+                item_objects[i]->Tick();
+            });
+        }
+
+        x += gridsize;
+        if (x / gridsize == 5) { 
+            y += gridsize;
             x = 0;
         }
     }   
-    x = 64*5;
+    x = gridsize*5;
     y = 0;
     
-    /* Draw dungeons, crystals/pendants and keys */
+    /* Draw dungeons */
     QList<Dungeon *> dungeon_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         dungeon_objects.append(new Dungeon(this, dungeons[i], x, y));
         y += 30;
     }
-    x = 64*6;
+    x = gridsize*6;
     y = 0;
 
+    /* Draw crystal / pendants */
     QList<DungeonType *> dungeontype_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         dungeontype_objects.append(new DungeonType(this, dungeons[i], x, y));
@@ -101,9 +112,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
         y += 30;
     }
 
-    x = 64*6.4;
+    x = gridsize*6.4;
     y = 0;
 
+    /* Draw bigkeys */
     QList<Bigkey *> bigkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         bigkey_objects.append(new Bigkey(this, dungeons[i], x, y));
@@ -114,9 +126,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
         y += 30;
     }
-    x = 64*7;
+    x = gridsize*7;
     y = 0;
 
+    /* Draw small keys */
     QList<Smallkey *> smallkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         smallkey_objects.append(new Smallkey(this, "number", x, y));
@@ -129,12 +142,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
         y += 30;
     }
 
-
-
     /* default always hilight green tunic */
-    for (int i = 0; i < items.length(); i++) {
-        if (item_objects[i]->name == "tunic") {
-            item_objects[i]->Toggle();
-        }
-    }
+    item_objects[items.indexOf("tunic")]->Toggle();
 }

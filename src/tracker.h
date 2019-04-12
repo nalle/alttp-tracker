@@ -7,6 +7,7 @@
 #include <QCoreApplication>
 #include <QLabel>
 #include <QDebug>
+
 namespace Ui {
    class MainWindow;
 }
@@ -16,6 +17,7 @@ using namespace std;
 class TrackerObject: public QMainWindow {
     Q_OBJECT
     public:
+        QString img_path="/usr/share/tracker/images/";
         QButton *button;
         QLabel *overlay;
         QLabel *label;
@@ -25,7 +27,6 @@ class TrackerObject: public QMainWindow {
         int currentimage = 1;
 
     void Progress() {
-        qDebug() << "Progressing item";
         if (this->toggled) {
             if (this->currentimage >= this->images) {
                 this->currentimage = 1;
@@ -39,8 +40,8 @@ class TrackerObject: public QMainWindow {
             this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
             this->toggled ^= true;
         }
-        QPixmap img("/usr/share/tracker/images/"+name+QString::number(currentimage)+".png"); 
         if (this->images > 1) {
+            QPixmap img(img_path+name+QString::number(currentimage)+".png"); 
             this->label->setPixmap(img);
         }
     }
@@ -58,9 +59,10 @@ class Item: public TrackerObject {
     Q_OBJECT
     public:
         int currentmedallion = 0;
+        bool ticked = true;
 
     void ProgressMedallion() {
-        QList<QString> images = { "", "/usr/share/tracker/images/medallion_mm1.png", "/usr/share/tracker/images/medallion_tr1.png", "/usr/share/tracker/images/medallion_both.png" }; 
+        QList<QString> images = { "", img_path+"medallion_mm1.png", img_path+"medallion_tr1.png", img_path+"medallion_both.png" }; 
 
         if (currentmedallion >= images.length()-1) {
             currentmedallion = 0;
@@ -72,10 +74,25 @@ class Item: public TrackerObject {
         this->overlay->setPixmap(img);
     }
 
+    void Tick() {
+        QPixmap img(img_path+"checkmark.png");
+        QPixmap noimg("");
+        this->overlay->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+
+        if (this->ticked == false) {
+            this->overlay->setPixmap(img);
+        } else {
+            this->overlay->setPixmap(noimg);
+        }
+
+        this->ticked ^= true;
+    }
+
     Item(QWidget *widget, QString name, int x, int y) {
         this->name = name;
+        this->ticked = false;
 
-        QString img = "/usr/share/tracker/images/"+name+"1.png";
+        QString img = img_path+name+"1.png";
         this->label = new QLabel(widget);
         this->overlay = new QLabel(widget);
         this->button = new QButton(widget);
@@ -98,7 +115,7 @@ class Dungeon: public TrackerObject {
     Dungeon(QWidget *widget, QString name, int x, int y) {
         this->name = name;
 
-        QPixmap img("/usr/share/tracker/images/"+name+"1.png");
+        QPixmap img(img_path+name+"1.png");
         this->label = new QLabel(widget);
         this->label->setPixmap(img);
         this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
@@ -113,7 +130,7 @@ class DungeonType: public TrackerObject {
     DungeonType(QWidget *widget, QString name, int x, int y) {
         this->name = name;
 
-        QPixmap img("/usr/share/tracker/images/questionmark.png");
+        QPixmap img(img_path+"questionmark.png");
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
         this->label->setPixmap(img.scaled(15,36,Qt::KeepAspectRatio));
@@ -124,7 +141,7 @@ class DungeonType: public TrackerObject {
     }
     
     void Progress() {
-        QList<QString> images = { "/usr/share/tracker/images/questionmark.png", "/usr/share/tracker/images/crystal.png", "/usr/share/tracker/images/crystal-red.png", "/usr/share/tracker/images/pendant.png", "/usr/share/tracker/images/pendant-green.png" };
+        QList<QString> images = { img_path+"questionmark.png", img_path+"crystal.png", img_path+"crystal-red.png", img_path+"pendant.png", img_path+"pendant-green.png" };
         
         if (this->currentimage >= images.length()) {
             this->currentimage = 1;
@@ -144,7 +161,7 @@ class Bigkey: public TrackerObject {
     Bigkey(QWidget *widget, QString name, int x, int y) {
         this->name = name;
 
-        QPixmap img("/usr/share/tracker/images/bigkey.png");
+        QPixmap img(img_path+"bigkey.png");
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
         this->label->setPixmap(img.scaled(30,30,Qt::KeepAspectRatio));
@@ -162,7 +179,7 @@ class Smallkey: public TrackerObject {
     Smallkey(QWidget *widget, QString name, int x, int y) {
         this->name = name;
 
-        QPixmap img("/usr/share/tracker/images/number1.png");
+        QPixmap img(img_path+"number1.png");
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
         this->label->setPixmap(img);
@@ -178,7 +195,7 @@ class Smallkey: public TrackerObject {
             this->currentimage++;
         }
 
-        QPixmap img("/usr/share/tracker/images/"+name+QString::number(currentimage)+".png"); 
+        QPixmap img(img_path+name+QString::number(currentimage)+".png"); 
         this->label->setPixmap(img);
     }
 
