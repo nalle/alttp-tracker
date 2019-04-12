@@ -12,3 +12,11 @@ cp tracker.desktop /usr/share/applications/
 ```
 
 Now your gnome quicksearch should have the tracker as an application
+
+
+# Build it manually
+Clone the respository then run
+```
+make
+sudo make install
+```
