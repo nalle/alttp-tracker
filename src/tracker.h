@@ -16,118 +16,187 @@ using namespace std;
 class TrackerObject: public QMainWindow {
     Q_OBJECT
     public:
-        #ifdef Q_OS_LINUX
-            QString image_path="/usr/share/tracker/images/";
-        #else
-            QString image_path="c:\\alttp-tracker\\images\\";
-        #endif
-        int x, y = 0;
-        unsigned int itemcount = 0;
-        bool toggled = false;
-        bool is_dungeon, is_medallion = false;
-        array<QString, 4> images = {};
-        array<QString, 4> dungeon_images = {};
-        array<QString, 3> medallion_images = {};
         QButton *button;
-        QLabel *icon;
-        QLabel *dungeon;
-        QLabel *medallion;
+        QLabel *overlay;
+        QLabel *label;
+        QString name;
+        bool toggled = false;
+        int images = 1;
+        int currentimage = 1;
 
-    QString image() {
-        return this->images[this->itemcount];
-    }
-
-    QString dungeon_image() {
-        return this->dungeon_images[this->itemcount];
-    }
-
-    QString medallion_image() {
-        return this->medallion_images[this->itemcount];
-    }
-
-    QString next_medallion_image() {
-        if ( this->itemcount == (sizeof(this->medallion_images) / 8 ) - 1 ) {
-            this->itemcount = 0;
+    void Progress() {
+        qDebug() << "Progressing item";
+        if (this->toggled) {
+            if (this->currentimage >= this->images) {
+                this->currentimage = 1;
+                this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
+                this->toggled ^= true;
+            } else {
+                this->currentimage++;
+                this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
+            }
         } else {
-            this->itemcount++;
+            this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
+            this->toggled ^= true;
         }
+        QPixmap img("/usr/share/tracker/images/"+name+QString::number(currentimage)+".png"); 
+        if (this->images > 1) {
+            this->label->setPixmap(img);
+        }
+    }
+    void Toggle() {
+        if (this->toggled) {
+            this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0;");
+        } else {
+            this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        }
+        this->toggled ^= true;
+    }
+};
 
-        if (this->medallion_images[this->itemcount].length() == 0) {
-            this->itemcount = 0;
+class Item: public TrackerObject {
+    Q_OBJECT
+    public:
+        int currentmedallion = 0;
+
+    void ProgressMedallion() {
+        QList<QString> images = { "", "/usr/share/tracker/images/medallion_mm1.png", "/usr/share/tracker/images/medallion_tr1.png", "/usr/share/tracker/images/medallion_both.png" }; 
+
+        if (currentmedallion >= images.length()-1) {
+            currentmedallion = 0;
+        } else {
+            currentmedallion++;
         }
-        return this->image_path+this->medallion_image();
+        QPixmap img(images[this->currentmedallion]);
+        this->overlay->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->overlay->setPixmap(img);
     }
 
-    QString next_dungeon_image() {
-        if ( this->itemcount == (sizeof(this->dungeon_images) / 8 ) - 1 ) {
-            this->itemcount = 0;
-        } else {
-            this->itemcount++;
-        }
+    Item(QWidget *widget, QString name, int x, int y) {
+        this->name = name;
 
-        if (this->dungeon_images[this->itemcount].length() == 0) {
-            this->itemcount = 0;
-        }
-        return this->image_path+this->dungeon_image();
+        QString img = "/usr/share/tracker/images/"+name+"1.png";
+        this->label = new QLabel(widget);
+        this->overlay = new QLabel(widget);
+        this->button = new QButton(widget);
+        this->overlay->setGeometry(QRect(QPoint(x, y),QSize(64, 64)));
+        this->overlay->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->label->setPixmap(img);
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(64, 64)));
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->button->setGeometry(QRect(QPoint(x, y),QSize(64, 64)));
+        this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
     }
+    
 
-    QString next_image() {
-        if ( this->itemcount == (sizeof(this->images) / 8 ) - 1 ) {
-            this->itemcount = 0;
-        } else {
-            this->itemcount++;
-        }
+};
 
-        if (this->images[this->itemcount].length() == 0) {
-            this->itemcount = 0;
-        }
-        return this->image_path+this->image();
+class Dungeon: public TrackerObject {
+    Q_OBJECT
+    public:
+
+    Dungeon(QWidget *widget, QString name, int x, int y) {
+        this->name = name;
+
+        QPixmap img("/usr/share/tracker/images/"+name+"1.png");
+        this->label = new QLabel(widget);
+        this->label->setPixmap(img);
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;");
     }
+};
 
-    void setupObject(int x, int y) {
-        this->dungeon_images = {"crystal1.png", "crystal2.png", "pendant1.png", "pendant2.png" };
-        this->medallion_images = { "medallion_tr1.png", "medallion_mm1.png", "medallion_both.png" };
-        this->x = x;
-        this->y = y;
-        this->icon->setPixmap(this->image_path+this->image());
-        this->icon->setGeometry(QRect(QPoint(this->x, this->y),QSize(62, 62)));
-        this->icon->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+class DungeonType: public TrackerObject {
+    Q_OBJECT
+    public:
 
-        if (this->is_dungeon) { 
-            this->dungeon->setGeometry(QRect(QPoint(this->x, this->y),QSize(62, 62)));
-            delete this->medallion;
+    DungeonType(QWidget *widget, QString name, int x, int y) {
+        this->name = name;
+
+        QPixmap img("/usr/share/tracker/images/questionmark.png");
+        this->label = new QLabel(widget);
+        this->button = new QButton(widget);
+        this->label->setPixmap(img.scaled(15,36,Qt::KeepAspectRatio));
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
+        this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
+    }
+    
+    void Progress() {
+        QList<QString> images = { "/usr/share/tracker/images/questionmark.png", "/usr/share/tracker/images/crystal.png", "/usr/share/tracker/images/crystal-red.png", "/usr/share/tracker/images/pendant.png", "/usr/share/tracker/images/pendant-green.png" };
+        
+        if (this->currentimage >= images.length()) {
+            this->currentimage = 1;
+            this->toggled ^= true;
         } else {
-            delete this->dungeon;
+            this->currentimage++;
         }
-/*
-        if (this->is_medallion) {
-            this->medallion->setGeometry(QRect(QPoint(this->x, this->y),QSize(62, 62)));
-            delete this->dungeon;
-        } else {
-            delete this->medallion;
-        }
-*/
-        this->button->setGeometry(QRect(QPoint(this->x, this->y),QSize(62, 62)));
+        QPixmap img(images[this->currentimage-1]);
+        this->label->setPixmap(img.scaled(15,36,Qt::KeepAspectRatio));
+    }
+};
+
+class Bigkey: public TrackerObject {
+    Q_OBJECT
+    public:
+
+    Bigkey(QWidget *widget, QString name, int x, int y) {
+        this->name = name;
+
+        QPixmap img("/usr/share/tracker/images/bigkey.png");
+        this->label = new QLabel(widget);
+        this->button = new QButton(widget);
+        this->label->setPixmap(img.scaled(30,30,Qt::KeepAspectRatio));
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
         this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
     }
 };
 
+class Smallkey: public TrackerObject {
+    Q_OBJECT
+    public:
 
-class Item: public TrackerObject {
+    Smallkey(QWidget *widget, QString name, int x, int y) {
+        this->name = name;
+
+        QPixmap img("/usr/share/tracker/images/number1.png");
+        this->label = new QLabel(widget);
+        this->button = new QButton(widget);
+        this->label->setPixmap(img);
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
+        this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
+    }
+    void Progress() {
+        if (this->currentimage >= this->images) {
+            this->currentimage = 1;
+        } else {
+            this->currentimage++;
+        }
+
+        QPixmap img("/usr/share/tracker/images/"+name+QString::number(currentimage)+".png"); 
+        this->label->setPixmap(img);
+    }
+
+    void Toggle() {
+        if (this->toggled) {
+            this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0;outline: none;");
+        } else {
+            this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;");
+        }
+        this->toggled ^= true;
+    }
+
 };
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
     public:
         explicit MainWindow(QWidget *parent = 0);
-    public slots:
-        bool toggle(Item *item);
-        void progress(Item *item);
-        void progress_dungeon(Item *item);
-        void progress_medallion(Item *item);
-        bool enable_item(Item *item);
-        bool disable_item(Item *item);
 };
-
 
 #endif // MAINWINDOW_H

@@ -11,7 +11,7 @@ bombos
 ether
 quake
 none
-desertpalace
+dp
 lamp
 hammer
 flute
