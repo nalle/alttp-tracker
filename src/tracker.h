@@ -119,7 +119,7 @@ class Dungeon: public TrackerObject {
         this->label = new QLabel(widget);
 //        this->label->setPixmap(img);
         this->label->setText(short_name);
-        this->label->setGeometry(QRect(QPoint(x, y),QSize(50, 30)));
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(52, 30)));
         this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
     }
 };
