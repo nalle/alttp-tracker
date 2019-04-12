@@ -23,6 +23,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
                                 "turtlerock",
                                 "ganonstower"
                             };
+    QList<QString> dungeons_shortname = { "EP", 
+                                "DP",
+                                "TOH",
+                                "HC",
+                                "AT",
+                                "POD",
+                                "SP",
+                                "SW",
+                                "TT",
+                                "IP",
+                                "MM",
+                                "TR",
+                                "GT"
+                            };
+
     QList<QString> items = { "bow", 
                              "boomerang", 
                              "hookshot", 
@@ -54,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
                              "halfmagic", 
                              "aghanim" 
                            };
-    QList<int> item_images = {3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,2,1,1,1,4,3,3,1,1};
+    QList<int> item_images = {2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,1,0,0,0,3,2,2,0,0};
     QList<int> smallkey_images = {0,1,1,2,1,6,1,3,1,2,3,4};
     
     int x = 0;
@@ -92,7 +107,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     /* Draw dungeons */
     QList<Dungeon *> dungeon_objects;
     for (int i = 0; i < dungeons.length(); i++) {
-        dungeon_objects.append(new Dungeon(this, dungeons[i], x, y));
+        dungeon_objects.append(new Dungeon(this, dungeons[i], dungeons_shortname[i], x, y));
         y += 30;
     }
     x = gridsize*6;
@@ -133,7 +148,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     QList<Smallkey *> smallkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         smallkey_objects.append(new Smallkey(this, "number", x, y));
-        smallkey_objects[i]->images = smallkey_images[i]+1;
+        smallkey_objects[i]->images = smallkey_images[i];
         connect(smallkey_objects[i]->button, &QPushButton::clicked, [=]{
             smallkey_objects[i]->Progress();
         });

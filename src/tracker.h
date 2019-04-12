@@ -24,23 +24,23 @@ class TrackerObject: public QMainWindow {
         QString name;
         bool toggled = false;
         int images = 1;
-        int currentimage = 1;
+        int currentimage = 0;
 
     void Progress() {
         if (this->toggled) {
-            if (this->currentimage >= this->images) {
-                this->currentimage = 1;
-                this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
-                this->toggled ^= true;
-            } else {
+            if (this->currentimage < this->images) {
                 this->currentimage++;
                 this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
+            } else {
+                this->currentimage = 0;
+                this->button->setStyleSheet("background-color: rgba(0,0,0,60%); color: white; border: 0; outline: none;");
+                this->toggled ^= true;
             }
         } else {
             this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
             this->toggled ^= true;
         }
-        if (this->images > 1) {
+        if (this->images > 0) {
             QPixmap img(img_path+name+QString::number(currentimage)+".png"); 
             this->label->setPixmap(img);
         }
@@ -92,7 +92,7 @@ class Item: public TrackerObject {
         this->name = name;
         this->ticked = false;
 
-        QString img = img_path+name+"1.png";
+        QString img = img_path+name+"0.png";
         this->label = new QLabel(widget);
         this->overlay = new QLabel(widget);
         this->button = new QButton(widget);
@@ -112,14 +112,15 @@ class Dungeon: public TrackerObject {
     Q_OBJECT
     public:
 
-    Dungeon(QWidget *widget, QString name, int x, int y) {
+    Dungeon(QWidget *widget, QString name, QString short_name, int x, int y) {
         this->name = name;
 
-        QPixmap img(img_path+name+"1.png");
+        QPixmap img(img_path+name+"0.png");
         this->label = new QLabel(widget);
-        this->label->setPixmap(img);
-        this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
-        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;");
+//        this->label->setPixmap(img);
+        this->label->setText(short_name);
+        this->label->setGeometry(QRect(QPoint(x, y),QSize(50, 30)));
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
     }
 };
 
@@ -164,7 +165,7 @@ class Bigkey: public TrackerObject {
         QPixmap img(img_path+"bigkey.png");
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
-        this->label->setPixmap(img.scaled(30,30,Qt::KeepAspectRatio));
+        this->label->setPixmap(img.scaled(38,38,Qt::KeepAspectRatio));
         this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
         this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
         this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
@@ -179,24 +180,25 @@ class Smallkey: public TrackerObject {
     Smallkey(QWidget *widget, QString name, int x, int y) {
         this->name = name;
 
-        QPixmap img(img_path+"number1.png");
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
-        this->label->setPixmap(img);
+        this->label->setText("0");
         this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
-        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
         this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
         this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
     }
     void Progress() {
-        if (this->currentimage >= this->images) {
-            this->currentimage = 1;
-        } else {
+        if (this->currentimage < this->images) {
             this->currentimage++;
+        } else {
+            this->currentimage = 0;
         }
 
-        QPixmap img(img_path+name+QString::number(currentimage)+".png"); 
-        this->label->setPixmap(img);
+        if (this->images > 0) {
+            this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
+            this->label->setText(QString::number(currentimage));
+        }
     }
 
     void Toggle() {
