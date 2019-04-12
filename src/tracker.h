@@ -117,7 +117,6 @@ class Dungeon: public TrackerObject {
 
         QPixmap img(img_path+name+"0.png");
         this->label = new QLabel(widget);
-//        this->label->setPixmap(img);
         this->label->setText(short_name);
         this->label->setGeometry(QRect(QPoint(x, y),QSize(52, 30)));
         this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
@@ -176,6 +175,7 @@ class Bigkey: public TrackerObject {
 class Smallkey: public TrackerObject {
     Q_OBJECT
     public:
+        QString textcolor = "white";
 
     Smallkey(QWidget *widget, QString name, int x, int y) {
         this->name = name;
@@ -188,15 +188,21 @@ class Smallkey: public TrackerObject {
         this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
         this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
     }
+
     void Progress() {
         if (this->currentimage < this->images) {
             this->currentimage++;
         } else {
             this->currentimage = 0;
         }
+        if (this->currentimage == this->images) {
+            textcolor = "green";
+        } else {
+            textcolor = "white";
+        }
 
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: "+textcolor+"; border: 0;outline: none;font-weight: bold; font-size: 24px");
         if (this->images > 0) {
-            this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
             this->label->setText(QString::number(currentimage));
         }
     }

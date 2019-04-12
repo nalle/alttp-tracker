@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     QList<QString> dungeons = { "easternpalace", 
                                 "desertpalace",
                                 "towerofhera",
-                                "hyrulecastle",
                                 "agahnimstower",
+                                "hyrulecastle",
                                 "palaceofdarkness",
                                 "swamppalace",
                                 "skullwoods",
@@ -26,8 +26,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     QList<QString> dungeons_shortname = { "EP", 
                                 "DP",
                                 "TOH",
-                                "HC",
                                 "AT",
+                                "HC",
                                 "POD",
                                 "SP",
                                 "SW",
@@ -116,14 +116,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     /* Draw crystal / pendants */
     QList<DungeonType *> dungeontype_objects;
     for (int i = 0; i < dungeons.length(); i++) {
-        dungeontype_objects.append(new DungeonType(this, dungeons[i], x, y));
-        connect(dungeontype_objects[i]->button, &QPushButton::clicked, [=]{
-            dungeontype_objects[i]->Toggle();
-        });
+        if (dungeons[i] == "hyrulecastle" || dungeons[i] == "agahnimstower" || dungeons[i] == "ganonstower") {
+            dungeontype_objects.append(new DungeonType(this, dungeons[i], x+1000, y+1000));
+        } else {
+            dungeontype_objects.append(new DungeonType(this, dungeons[i], x, y));
+            connect(dungeontype_objects[i]->button, &QPushButton::clicked, [=]{
+                dungeontype_objects[i]->Toggle();
+            });
 
-        connect(dungeontype_objects[i]->button, &QButton::rightClicked, [=]{
-            dungeontype_objects[i]->Progress();
-        });
+            connect(dungeontype_objects[i]->button, &QButton::rightClicked, [=]{
+                dungeontype_objects[i]->Progress();
+            });
+        }
+
         y += 30;
     }
 
@@ -133,11 +138,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     /* Draw bigkeys */
     QList<Bigkey *> bigkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
-        bigkey_objects.append(new Bigkey(this, dungeons[i], x, y));
-        connect(bigkey_objects[i]->button, &QPushButton::clicked, [=]{
-            bigkey_objects[i]->Toggle();
-        });
-
+        if (dungeons[i] == "agahnimstower" || dungeons[i] == "hyrulecastle") {
+            bigkey_objects.append(new Bigkey(this, dungeons[i], x+1000, y+1000));
+        } else {
+            bigkey_objects.append(new Bigkey(this, dungeons[i], x, y));
+            connect(bigkey_objects[i]->button, &QPushButton::clicked, [=]{
+                bigkey_objects[i]->Toggle();
+            });
+        }
 
         y += 30;
     }
@@ -147,12 +155,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     /* Draw small keys */
     QList<Smallkey *> smallkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
-        smallkey_objects.append(new Smallkey(this, "number", x, y));
-        smallkey_objects[i]->images = smallkey_images[i];
-        connect(smallkey_objects[i]->button, &QPushButton::clicked, [=]{
-            smallkey_objects[i]->Progress();
-        });
-
+        if (dungeons[i] == "easternpalace") {        
+            smallkey_objects.append(new Smallkey(this, "number", x+1000, y+1000));
+        } else {
+            smallkey_objects.append(new Smallkey(this, "number", x, y));
+            smallkey_objects[i]->images = smallkey_images[i];
+            connect(smallkey_objects[i]->button, &QPushButton::clicked, [=]{
+                smallkey_objects[i]->Progress();
+            });
+        }
 
         y += 30;
     }
