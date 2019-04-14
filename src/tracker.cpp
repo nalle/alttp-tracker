@@ -70,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
                              "aghanim" 
                            };
     QList<int> item_images = {2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,1,0,0,0,3,2,2,0,0};
-    QList<int> smallkey_images = {0,1,1,2,1,6,1,3,1,2,3,4};
+    QList<int> smallkey_images = {0,1,1,2,1,6,1,3,1,2,3,4,4};
     
     int x = 0;
     int y = 0;

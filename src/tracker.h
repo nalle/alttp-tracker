@@ -126,6 +126,7 @@ class Dungeon: public TrackerObject {
 class DungeonType: public TrackerObject {
     Q_OBJECT
     public:
+        int currentimage = 0;
 
     DungeonType(QWidget *widget, QString name, int x, int y) {
         this->name = name;
@@ -133,7 +134,7 @@ class DungeonType: public TrackerObject {
         QPixmap img(img_path+"questionmark.png");
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
-        this->label->setPixmap(img.scaled(15,36,Qt::KeepAspectRatio));
+        this->label->setPixmap(img.scaled(20,36,Qt::KeepAspectRatio));
         this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
         this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
         this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
@@ -143,14 +144,15 @@ class DungeonType: public TrackerObject {
     void Progress() {
         QList<QString> images = { img_path+"questionmark.png", img_path+"crystal.png", img_path+"crystal-red.png", img_path+"pendant.png", img_path+"pendant-green.png" };
         
-        if (this->currentimage >= images.length()) {
-            this->currentimage = 1;
-            this->toggled ^= true;
-        } else {
+        if (this->currentimage < images.length()-1) {
             this->currentimage++;
+        } else {
+            this->currentimage = 0;
+            this->toggled ^= true;
         }
-        QPixmap img(images[this->currentimage-1]);
-        this->label->setPixmap(img.scaled(15,36,Qt::KeepAspectRatio));
+
+        QPixmap img(images[this->currentimage]);
+        this->label->setPixmap(img.scaled(20,36,Qt::KeepAspectRatio));
     }
 };
 
