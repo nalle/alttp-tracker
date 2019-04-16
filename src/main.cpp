@@ -31,7 +31,8 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     MainWindow w;
 
-    w.setFixedSize(475,400);
+//    w.setFixedSize(475,400);
+    w.resize(475,400);
     w.setStyleSheet("background-color:black;");
     w.show();
 

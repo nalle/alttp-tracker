@@ -5,10 +5,25 @@
 #include <QMessageBox>
 #include <QtDebug>
 #include <QList>
-
-#define gridsize 64
+#include <QtWidgets>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
+    MainWindow::RedrawTracker();
+}
+
+
+void MainWindow::Resize(float scale) {
+    foreach (QWidget *child, this->findChildren<QWidget*>()) {
+        float width = child->height()*scale;
+        float height = child->width()*scale;
+        float x = child->pos().x()*scale;
+        float y = child->pos().y()*scale;
+        child->setGeometry(QRect(QPoint(x, y),QSize(height, width)));
+    }
+}
+
+void MainWindow::RedrawTracker() { 
+    int gridsize = 64;
     QList<QString> dungeons = { "easternpalace", 
                                 "desertpalace",
                                 "towerofhera",
@@ -170,4 +185,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     /* default always hilight green tunic */
     item_objects[items.indexOf("tunic")]->Toggle();
+
 }
+
+void MainWindow::resizeEvent(QResizeEvent* event) {
+    QMainWindow::resizeEvent(event);
+    MainWindow::Resize((float)this->width()/(float)475);
+}
+
+

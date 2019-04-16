@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <cmath>
 #include "button.h"
 #include <QMainWindow>
 #include <QPushButton>
@@ -25,6 +26,7 @@ class TrackerObject: public QMainWindow {
         bool toggled = false;
         int images = 1;
         int currentimage = 0;
+        float fontsize = 24;
 
     void Progress() {
         if (this->toggled) {
@@ -71,7 +73,7 @@ class Item: public TrackerObject {
         }
         QPixmap img(images[this->currentmedallion]);
         this->overlay->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
-        this->overlay->setPixmap(img);
+        this->overlay->setPixmap(img.scaled(64, 64, Qt::KeepAspectRatio));
     }
 
     void Tick() {
@@ -92,13 +94,13 @@ class Item: public TrackerObject {
         this->name = name;
         this->ticked = false;
 
-        QString img = img_path+name+"0.png";
+        QPixmap img(img_path+name+"0.png");
         this->label = new QLabel(widget);
         this->overlay = new QLabel(widget);
         this->button = new QButton(widget);
         this->overlay->setGeometry(QRect(QPoint(x, y),QSize(64, 64)));
         this->overlay->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
-        this->label->setPixmap(img);
+        this->label->setPixmap(img.scaled(64, 64, Qt::KeepAspectRatio));
         this->label->setGeometry(QRect(QPoint(x, y),QSize(64, 64)));
         this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;");
         this->button->setGeometry(QRect(QPoint(x, y),QSize(64, 64)));
@@ -119,7 +121,7 @@ class Dungeon: public TrackerObject {
         this->label = new QLabel(widget);
         this->label->setText(short_name);
         this->label->setGeometry(QRect(QPoint(x, y),QSize(52, 30)));
-        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: "+QString::number(round(fontsize))+"px");
     }
 };
 
@@ -186,7 +188,7 @@ class Smallkey: public TrackerObject {
         this->button = new QButton(widget);
         this->label->setText("0");
         this->label->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
-        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: 24px");
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: "+QString::number(round(fontsize))+"px");
         this->button->setGeometry(QRect(QPoint(x, y),QSize(48, 30)));
         this->button->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0; outline: none;");
     }
@@ -203,7 +205,7 @@ class Smallkey: public TrackerObject {
             textcolor = "white";
         }
 
-        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: "+textcolor+"; border: 0;outline: none;font-weight: bold; font-size: 24px");
+        this->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: "+textcolor+"; border: 0;outline: none;font-weight: bold; font-size: "+QString::number(round(fontsize))+"px");
         if (this->images > 0) {
             this->label->setText(QString::number(currentimage));
         }
@@ -224,6 +226,11 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
     public:
         explicit MainWindow(QWidget *parent = 0);
+        void RedrawTracker();
+        void Resize(float scale = 1);
+    protected:
+        void resizeEvent(QResizeEvent *event) override;
+
 };
 
 #endif // MAINWINDOW_H
