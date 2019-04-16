@@ -7,23 +7,69 @@
 #include <QList>
 #include <QtWidgets>
 
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     MainWindow::RedrawTracker();
 }
 
 
 void MainWindow::Resize(float scale) {
-    foreach (QWidget *child, this->findChildren<QWidget*>()) {
+    for (int i = 0; i < item_objects.length(); i++) {
+        QPixmap img(item_objects[i]->img_path+item_objects[i]->name+item_objects[i]->currentimage+".png");
+        item_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
+        item_objects[i]->button->setGeometry(QRect(QPoint(item_objects[i]->x*scale, item_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        item_objects[i]->label->setGeometry(QRect(QPoint(item_objects[i]->x*scale, item_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+    }
+
+    for (int i = 0; i < smallkey_objects.length(); i++) {
+        QPixmap img(smallkey_objects[i]->img_path+smallkey_objects[i]->name+smallkey_objects[i]->currentimage+".png");
+        smallkey_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
+        smallkey_objects[i]->button->setGeometry(QRect(QPoint(smallkey_objects[i]->x*scale, smallkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        smallkey_objects[i]->label->setGeometry(QRect(QPoint(smallkey_objects[i]->x*scale, smallkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+    }
+
+    for (int i = 0; i < bigkey_objects.length(); i++) {
+        QPixmap img(bigkey_objects[i]->img_path+"bigkey.png");
+        bigkey_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
+        bigkey_objects[i]->button->setGeometry(QRect(QPoint(bigkey_objects[i]->x*scale, bigkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        bigkey_objects[i]->label->setGeometry(QRect(QPoint(bigkey_objects[i]->x*scale, bigkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+    }
+
+    for (int i = 0; i < dungeon_objects.length(); i++) {
+        dungeon_objects[i]->label->setGeometry(QRect(QPoint(dungeon_objects[i]->x*scale, dungeon_objects[i]->y*scale),QSize(52*scale, 30*scale)));
+    }
+
+    for (int i = 0; i < dungeontype_objects.length(); i++) {
+        QPixmap img(dungeontype_objects[i]->img_path+dungeontype_objects[i]->name+"0.png");
+        dungeontype_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
+        dungeontype_objects[i]->button->setGeometry(QRect(QPoint(dungeontype_objects[i]->x*scale, dungeontype_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        dungeontype_objects[i]->label->setGeometry(QRect(QPoint(dungeontype_objects[i]->x*scale, dungeontype_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+    }
+
+/*
+    foreach (QLabel *child, this->findChildren<QLabel*>()) {
+        float width = child->height()*scale;
+        float height = child->width()*scale;
+        float x = child->pos().x()*scale;
+        float y = child->pos().y()*scale;
+
+        if (child->pixmap() != 0) {
+            qDebug() << child->pixmap();
+            //child->setPixmap(child->pixmap().scaled(img->height()*scaled, img->width()*scaled, Qt::KeepAspectRatio));
+        }
+        child->setGeometry(QRect(QPoint(x, y),QSize(height, width)));
+    }
+    foreach (QButton *child, this->findChildren<QButton*>()) {
         float width = child->height()*scale;
         float height = child->width()*scale;
         float x = child->pos().x()*scale;
         float y = child->pos().y()*scale;
         child->setGeometry(QRect(QPoint(x, y),QSize(height, width)));
     }
+*/
 }
 
 void MainWindow::RedrawTracker() { 
-    int gridsize = 64;
     QList<QString> dungeons = { "easternpalace", 
                                 "desertpalace",
                                 "towerofhera",
@@ -86,12 +132,13 @@ void MainWindow::RedrawTracker() {
                            };
     QList<int> item_images = {2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,1,0,0,0,3,2,2,0,0};
     QList<int> smallkey_images = {0,1,1,2,1,6,1,3,1,2,3,4,4};
-    
+
+    int gridsize = 64;
+   
     int x = 0;
     int y = 0;
 
     /* Draw items */
-    QList<Item *> item_objects;
     for (int i = 0; i < items.length(); i++) {
         item_objects.append(new Item(this, items[i], x, y));
         item_objects[i]->images = item_images[i];
@@ -120,7 +167,6 @@ void MainWindow::RedrawTracker() {
     y = 0;
     
     /* Draw dungeons */
-    QList<Dungeon *> dungeon_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         dungeon_objects.append(new Dungeon(this, dungeons[i], dungeons_shortname[i], x, y));
         y += 30;
@@ -129,7 +175,6 @@ void MainWindow::RedrawTracker() {
     y = 0;
 
     /* Draw crystal / pendants */
-    QList<DungeonType *> dungeontype_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         if (dungeons[i] == "hyrulecastle" || dungeons[i] == "agahnimstower" || dungeons[i] == "ganonstower") {
             dungeontype_objects.append(new DungeonType(this, dungeons[i], x+1000, y+1000));
@@ -151,7 +196,6 @@ void MainWindow::RedrawTracker() {
     y = 0;
 
     /* Draw bigkeys */
-    QList<Bigkey *> bigkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         if (dungeons[i] == "agahnimstower" || dungeons[i] == "hyrulecastle") {
             bigkey_objects.append(new Bigkey(this, dungeons[i], x+1000, y+1000));
@@ -168,7 +212,6 @@ void MainWindow::RedrawTracker() {
     y = 0;
 
     /* Draw small keys */
-    QList<Smallkey *> smallkey_objects;
     for (int i = 0; i < dungeons.length(); i++) {
         if (dungeons[i] == "easternpalace") {        
             smallkey_objects.append(new Smallkey(this, "number", x+1000, y+1000));

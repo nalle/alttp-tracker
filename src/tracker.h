@@ -27,6 +27,8 @@ class TrackerObject: public QMainWindow {
         int images = 1;
         int currentimage = 0;
         float fontsize = 24;
+        float x;
+        float y;
 
     void Progress() {
         if (this->toggled) {
@@ -93,6 +95,8 @@ class Item: public TrackerObject {
     Item(QWidget *widget, QString name, int x, int y) {
         this->name = name;
         this->ticked = false;
+        this->x = x;
+        this->y = y;
 
         QPixmap img(img_path+name+"0.png");
         this->label = new QLabel(widget);
@@ -116,6 +120,9 @@ class Dungeon: public TrackerObject {
 
     Dungeon(QWidget *widget, QString name, QString short_name, int x, int y) {
         this->name = name;
+        this->x = x;
+        this->y = y;
+
 
         QPixmap img(img_path+name+"0.png");
         this->label = new QLabel(widget);
@@ -132,6 +139,9 @@ class DungeonType: public TrackerObject {
 
     DungeonType(QWidget *widget, QString name, int x, int y) {
         this->name = name;
+        this->x = x;
+        this->y = y;
+
 
         QPixmap img(img_path+"questionmark.png");
         this->label = new QLabel(widget);
@@ -164,6 +174,9 @@ class Bigkey: public TrackerObject {
 
     Bigkey(QWidget *widget, QString name, int x, int y) {
         this->name = name;
+        this->x = x;
+        this->y = y;
+
 
         QPixmap img(img_path+"bigkey.png");
         this->label = new QLabel(widget);
@@ -183,6 +196,9 @@ class Smallkey: public TrackerObject {
 
     Smallkey(QWidget *widget, QString name, int x, int y) {
         this->name = name;
+        this->x = x;
+        this->y = y;
+
 
         this->label = new QLabel(widget);
         this->button = new QButton(widget);
@@ -228,9 +244,15 @@ class MainWindow : public QMainWindow {
         explicit MainWindow(QWidget *parent = 0);
         void RedrawTracker();
         void Resize(float scale = 1);
+        QList<Item *> item_objects;
+        QList<Smallkey *> smallkey_objects;
+        QList<Bigkey *> bigkey_objects;
+        QList<DungeonType *> dungeontype_objects;
+        QList<Dungeon *> dungeon_objects;
     protected:
         void resizeEvent(QResizeEvent *event) override;
 
 };
+
 
 #endif // MAINWINDOW_H
