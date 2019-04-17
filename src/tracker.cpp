@@ -15,58 +15,40 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
 void MainWindow::Resize(float scale) {
     for (int i = 0; i < item_objects.length(); i++) {
-        QPixmap img(item_objects[i]->img_path+item_objects[i]->name+item_objects[i]->currentimage+".png");
+        QString currentimage = QString::number(item_objects[i]->currentimage);
+        QPixmap img(item_objects[i]->img_path+item_objects[i]->name+currentimage+".png");
         item_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
         item_objects[i]->button->setGeometry(QRect(QPoint(item_objects[i]->x*scale, item_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
         item_objects[i]->label->setGeometry(QRect(QPoint(item_objects[i]->x*scale, item_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
     }
 
     for (int i = 0; i < smallkey_objects.length(); i++) {
-        QPixmap img(smallkey_objects[i]->img_path+smallkey_objects[i]->name+smallkey_objects[i]->currentimage+".png");
-        smallkey_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
-        smallkey_objects[i]->button->setGeometry(QRect(QPoint(smallkey_objects[i]->x*scale, smallkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
-        smallkey_objects[i]->label->setGeometry(QRect(QPoint(smallkey_objects[i]->x*scale, smallkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        smallkey_objects[i]->label->setText(QString::number(smallkey_objects[i]->currentimage));
+        smallkey_objects[i]->button->setGeometry(QRect(QPoint(smallkey_objects[i]->x*scale, smallkey_objects[i]->y*scale),QSize(48*scale, 30*scale)));
+        smallkey_objects[i]->label->setGeometry(QRect(QPoint(smallkey_objects[i]->x*scale, smallkey_objects[i]->y*scale),QSize(48*scale, 30*scale)));
+        smallkey_objects[i]->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: "+QString::number(round(24*scale))+"px");
     }
 
     for (int i = 0; i < bigkey_objects.length(); i++) {
         QPixmap img(bigkey_objects[i]->img_path+"bigkey.png");
-        bigkey_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
-        bigkey_objects[i]->button->setGeometry(QRect(QPoint(bigkey_objects[i]->x*scale, bigkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
-        bigkey_objects[i]->label->setGeometry(QRect(QPoint(bigkey_objects[i]->x*scale, bigkey_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        bigkey_objects[i]->label->setPixmap(img.scaled(48*scale, 30*scale, Qt::KeepAspectRatio));
+        bigkey_objects[i]->button->setGeometry(QRect(QPoint(bigkey_objects[i]->x*scale, bigkey_objects[i]->y*scale),QSize(48*scale, 30*scale)));
+        bigkey_objects[i]->label->setGeometry(QRect(QPoint(bigkey_objects[i]->x*scale, bigkey_objects[i]->y*scale),QSize(48*scale, 30*scale)));
     }
 
     for (int i = 0; i < dungeon_objects.length(); i++) {
+        dungeon_objects[i]->label->setText(dungeon_objects[i]->short_name);
         dungeon_objects[i]->label->setGeometry(QRect(QPoint(dungeon_objects[i]->x*scale, dungeon_objects[i]->y*scale),QSize(52*scale, 30*scale)));
+        dungeon_objects[i]->label->setStyleSheet("background-color: rgba(0,0,0,0%); color: white; border: 0;outline: none;font-weight: bold; font-size: "+QString::number(round(24*scale))+"px");
     }
 
     for (int i = 0; i < dungeontype_objects.length(); i++) {
-        QPixmap img(dungeontype_objects[i]->img_path+dungeontype_objects[i]->name+"0.png");
+        int currentimage = dungeontype_objects[i]->currentimage;
+        QPixmap img(dungeontype_objects[i]->images[currentimage]);
         dungeontype_objects[i]->label->setPixmap(img.scaled(img.height()*scale, img.width()*scale, Qt::KeepAspectRatio));
-        dungeontype_objects[i]->button->setGeometry(QRect(QPoint(dungeontype_objects[i]->x*scale, dungeontype_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
-        dungeontype_objects[i]->label->setGeometry(QRect(QPoint(dungeontype_objects[i]->x*scale, dungeontype_objects[i]->y*scale),QSize(img.height()*scale, img.width()*scale)));
+        dungeontype_objects[i]->button->setGeometry(QRect(QPoint(dungeontype_objects[i]->x*scale, dungeontype_objects[i]->y*scale),QSize(48*scale, 30*scale)));
+        dungeontype_objects[i]->label->setGeometry(QRect(QPoint(dungeontype_objects[i]->x*scale, dungeontype_objects[i]->y*scale),QSize(48*scale, 30*scale)));
     }
-
-/*
-    foreach (QLabel *child, this->findChildren<QLabel*>()) {
-        float width = child->height()*scale;
-        float height = child->width()*scale;
-        float x = child->pos().x()*scale;
-        float y = child->pos().y()*scale;
-
-        if (child->pixmap() != 0) {
-            qDebug() << child->pixmap();
-            //child->setPixmap(child->pixmap().scaled(img->height()*scaled, img->width()*scaled, Qt::KeepAspectRatio));
-        }
-        child->setGeometry(QRect(QPoint(x, y),QSize(height, width)));
-    }
-    foreach (QButton *child, this->findChildren<QButton*>()) {
-        float width = child->height()*scale;
-        float height = child->width()*scale;
-        float x = child->pos().x()*scale;
-        float y = child->pos().y()*scale;
-        child->setGeometry(QRect(QPoint(x, y),QSize(height, width)));
-    }
-*/
 }
 
 void MainWindow::RedrawTracker() { 

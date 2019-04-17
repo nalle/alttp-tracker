@@ -22,7 +22,7 @@ class TrackerObject: public QMainWindow {
         QButton *button;
         QLabel *overlay;
         QLabel *label;
-        QString name;
+        QString name, short_name;
         bool toggled = false;
         int images = 1;
         int currentimage = 0;
@@ -120,6 +120,7 @@ class Dungeon: public TrackerObject {
 
     Dungeon(QWidget *widget, QString name, QString short_name, int x, int y) {
         this->name = name;
+        this->short_name = short_name;
         this->x = x;
         this->y = y;
 
@@ -136,12 +137,12 @@ class DungeonType: public TrackerObject {
     Q_OBJECT
     public:
         int currentimage = 0;
+        QList<QString> images = { img_path+"questionmark.png", img_path+"crystal.png", img_path+"crystal-red.png", img_path+"pendant.png", img_path+"pendant-green.png" };
 
     DungeonType(QWidget *widget, QString name, int x, int y) {
         this->name = name;
         this->x = x;
         this->y = y;
-
 
         QPixmap img(img_path+"questionmark.png");
         this->label = new QLabel(widget);
@@ -154,16 +155,14 @@ class DungeonType: public TrackerObject {
     }
     
     void Progress() {
-        QList<QString> images = { img_path+"questionmark.png", img_path+"crystal.png", img_path+"crystal-red.png", img_path+"pendant.png", img_path+"pendant-green.png" };
-        
-        if (this->currentimage < images.length()-1) {
+        if (this->currentimage < this->images.length()-1) {
             this->currentimage++;
         } else {
             this->currentimage = 0;
             this->toggled ^= true;
         }
 
-        QPixmap img(images[this->currentimage]);
+        QPixmap img(this->images[this->currentimage]);
         this->label->setPixmap(img.scaled(20,36,Qt::KeepAspectRatio));
     }
 };
